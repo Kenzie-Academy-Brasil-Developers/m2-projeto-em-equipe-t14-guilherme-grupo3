@@ -1,0 +1,16 @@
+.card{
+    width: 12.5rem;
+    height: 17rem;
+    box-shadow: 0px 0px 5px rgba(78, 32, 150, 0.25);
+    border-radius: 4px;
+
+}
+
+.card-image{
+    border-radius:4px 0 0 4px;
+    height: 50%;
+}
+
+.card-text{
+    padding: 16px;
+}

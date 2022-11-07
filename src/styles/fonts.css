@@ -1,0 +1,35 @@
+ .font-brand{
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+ }
+
+ .font-gray{
+    font-size: 0.5rem;
+    font-weight: 600;
+    color: var(--gray-2);
+ }
+
+ .font-body-brand{
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-primary);
+ }
+
+ .font-body-black{
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--gray-1);
+ }
+
+ .font-card-profile-brand{
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--color-primary);
+ }
+
+ .font-card-profile-black{
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--gray-1);
+ }
