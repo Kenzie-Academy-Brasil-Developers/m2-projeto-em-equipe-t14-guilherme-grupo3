@@ -1,9 +1,11 @@
 .btn{
+    border: none;
     padding: 4px 24px;
     border-radius: 1rem;
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
+    
 }
 
 .btn-primary{

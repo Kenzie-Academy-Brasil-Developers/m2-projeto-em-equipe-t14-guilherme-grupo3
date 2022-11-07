@@ -36,7 +36,7 @@ export const createModalUpdateProfile = () => {
     const modalContainer = createModalContainer()
 
     modalContainer.insertAdjacentHTML('beforeend',
-        `<h2>Atualizar perfil</h2>
+        `<h2 class='font-brand'>Atualizar perfil</h2>
         <form>
             <input type="text" placeholder="Nome">
             <input type="text" placeholder="Email">
