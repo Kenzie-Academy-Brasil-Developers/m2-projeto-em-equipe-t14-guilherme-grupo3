@@ -16,8 +16,10 @@
     --grey-2:#90A4AE;
     --grey-3:#EEEEEE;
     --grey-4:#FFFFFF;
+    --grey-5:#F1EEF7;
     --green:#33CC66;
     --red:#EA534A;
+    --transparency: #1b1c1e65;
 }
 
 body{

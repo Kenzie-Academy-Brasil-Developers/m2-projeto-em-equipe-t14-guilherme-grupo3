@@ -46,5 +46,20 @@ li {
 
 li > div{
     padding-left: 16px;
+    /* width: 100%; */
+}
+
+li>button{
+    align-self: center;
+    width: fit-content;
+}
+
+footer{
+    margin-top: 82px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    background-color: var(--grey-5);
 }
 

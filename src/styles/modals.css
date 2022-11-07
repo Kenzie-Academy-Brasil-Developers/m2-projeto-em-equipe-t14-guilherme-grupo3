@@ -1,5 +1,5 @@
 .modal-container{
-    background-color: var(--grey-1);
+    background-color: var(--transparency);
     display: flex;
     width: 100vw;
     height: 100vh;
