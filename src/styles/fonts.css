@@ -33,3 +33,9 @@
     font-weight: 400;
     color: var(--gray-1);
  }
+
+ .font-footer-brand{
+   font-size: 0.75rem;
+   font-weight: 400;
+   color: var(--color-primary);
+}

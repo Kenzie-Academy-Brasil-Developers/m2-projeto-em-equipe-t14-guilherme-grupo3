@@ -1,15 +1,16 @@
 .btn{
     border: none;
+    background: none;
     padding: 4px 24px;
     border-radius: 1rem;
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    
 }
 
 .btn-primary{
     background-color: var(--color-primary);
+    border: 1px solid var(--color-primary);
     color: var(--grey-4);
     transition: 0.3s;
 }
@@ -33,6 +34,7 @@
 
 .btn-green{
     background-color: var(--green);
+    border: 1px solid var(--green);
     color: var(--grey-4);
     transition: 0.3s;
 }
