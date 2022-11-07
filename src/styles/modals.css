@@ -34,20 +34,24 @@
     /* justify-content: center; */
     align-items: center;
     padding: 70px ;
-    gap: 16px;
+    gap: 22px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
 .footer-modal{
 height: 12px;
-background-color: #4E2096;
+background-color: var(--color-primary);
 border-radius: 0 0 16px 16px;
 }
 
 #close-modal{
     border: none;
     background: none;
-    /* background-image: url('../images/close.svg'); */
-    /* border: 1px solid red; */
     width: 24px;
     height: 24px;
     border-radius: 25px;
@@ -55,7 +59,7 @@ border-radius: 0 0 16px 16px;
 
 #close-modal:hover{
     cursor: pointer;
-    background-color: rgb(61, 61, 61);
+    background-color: var(--red);
 }
 
 

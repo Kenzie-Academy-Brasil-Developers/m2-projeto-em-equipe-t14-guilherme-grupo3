@@ -1,4 +1,5 @@
-export const createModalContainer = () =>{
+/* --------------- CRIA CONTAINER PADRÃO PARA OS MODAIS -------------- */
+const createModalContainer = () => {
     const body = document.querySelector('body')
 
     const divContainer = document.createElement('div')
@@ -23,6 +24,25 @@ export const createModalContainer = () =>{
     button.appendChild(img)
 
     body.appendChild(divContainer)
+
+    button.onclick = () => divContainer.remove()
+
     return divContent
 }
 
+
+/* --------------- CRIA MODAL DE ATUALIZAÇÃO DE PERFIL -------------- */
+export const createModalUpdateProfile = () => {
+    const modalContainer = createModalContainer()
+
+    modalContainer.insertAdjacentHTML('beforeend',
+        `<h2>Atualizar perfil</h2>
+        <form>
+            <input type="text" placeholder="Nome">
+            <input type="text" placeholder="Email">
+            <input type="text" placeholder="Avatar">
+            <button class='btn btn-primary'>Atualizar</button>
+        </form>
+        `
+    )
+}
