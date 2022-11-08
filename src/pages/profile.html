@@ -1,16 +1,103 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta name="description" content="">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../styles/register.css">
-    <script defer src='../scripts/register.js'></script>
+    <link rel="stylesheet" href="../styles/positioning.css">
+    <link rel="stylesheet" href="../styles/profile.css">
+    <link rel="stylesheet" href="../styles/modals.css">
+    <link rel="stylesheet" href="../styles/buttons.css">
+    <link rel="stylesheet" href="../styles/fonts.css">
+    <link rel="stylesheet" href="../styles/globalStyles.css">
+    <script type="module" defer src='../scripts/profile.js'></script>
     <title>KenziePets - Registro</title>
 </head>
+
 <body>
+    <header class="container display-flex justify-between align-items-center">
+        <img class="logotipo" src="../images/logo.svg" alt="logotipo KenziePets">
+        <nav class="display-flex">
+            <button class="btn btn-line">Perfil</button>
+            <button class="btn btn-primary">Logout</button>
+        </nav>
+    </header>
+    <main class="display-flex flex-direction-column align-items-center">
+        <section class="display-flex background-purple justify-center">
+            <img class="profile-image" src="https://upload.wikimedia.org/wikipedia/commons/4/43/Foto_Perfil.jpg">
+        </section>
+        <section class="width-100 display-flex flex-direction-column align-items-center">
+            <div class="profile-information display-flex flex-direction-column justify-between">
+                <h2 class="font-brand text-align-center">Dados pessoais</h2>
+                <p><span class="font-body-brand">Nome:</span> <span class="font-body-black">Kenzinha</span></p>
+                <p><span class="font-body-brand">E-mail:</span> <span class="font-body-black">Kenzinha</span></p>
+                <p><span class="font-body-brand">Data de nascimento:</span> <span
+                        class="font-body-black">21/03/2000</span></p>
+                <div class="display-flex justify-evenly">
+                    <button class="btn btn-primary att-profile" type="button">Atualizar informações</button>
+                    <button class="btn btn-line-red delete-profile" type="button">Deletar conta</button>
+                </div>
+            </div>
+        </section>
+        <section class="pets-section display-flex flex-direction-column">
+            <div>
+                <button class="register-pet btn btn-green" type="button">Cadastrar novo pet</button>
+            </div>
+            <ul class="display-flex wrap">
+                <li class="display-flex">
+                    <img class="card-image"
+                        src="https://d3ugyf2ht6aenh.cloudfront.net/stores/001/660/386/themes/style/img-1528169277-1626147375-477d36b93f28cbb72b20e24d3fb163591626147376.png?486223581">
+                    <div class="display-flex info-pet flex-direction-column justify-evenly">
+                        <p><span class="font-body-brand">Nome:</span> <span class="font-body-black">Bidu</span></p>
+                        <p><span class="font-body-brand">Espécie:</span> <span class="font-body-black">Cachorro</span>
+                        </p>
+                        <p><span class="font-body-brand">Adotável:</span> <span class="font-body-black">Sim</span></p>
+                        <button class="btn btn-primary att-pet">Atualizar</button>
+                    </div>
+                </li>
+                <li class="display-flex">
+                    <img class="card-image"
+                        src="https://d3ugyf2ht6aenh.cloudfront.net/stores/001/660/386/themes/style/img-1528169277-1626147375-477d36b93f28cbb72b20e24d3fb163591626147376.png?486223581">
+                    <div class="display-flex info-pet flex-direction-column justify-evenly">
+                        <p><span class="font-body-brand">Nome:</span> <span class="font-body-black">Bidu</span></p>
+                        <p><span class="font-body-brand">Espécie:</span> <span class="font-body-black">Cachorro</span>
+                        </p>
+                        <p><span class="font-body-brand">Adotável:</span> <span class="font-body-black">Sim</span></p>
+                        <button class="btn btn-primary att-pet">Atualizar</button>
+                    </div>
+                </li>
+                <li class="display-flex">
+                    <img class="card-image"
+                        src="https://d3ugyf2ht6aenh.cloudfront.net/stores/001/660/386/themes/style/img-1528169277-1626147375-477d36b93f28cbb72b20e24d3fb163591626147376.png?486223581">
+                    <div class="display-flex info-pet flex-direction-column justify-evenly">
+                        <p><span class="font-body-brand">Nome:</span> <span class="font-body-black">Bidu</span></p>
+                        <p><span class="font-body-brand">Espécie:</span> <span class="font-body-black">Cachorro</span>
+                        </p>
+                        <p><span class="font-body-brand">Adotável:</span> <span class="font-body-black">Sim</span></p>
+                        <button class="btn btn-primary att-pet">Atualizar</button>
+                    </div>
+                </li>
+                <li class="display-flex">
+                    <img class="card-image"
+                        src="https://d3ugyf2ht6aenh.cloudfront.net/stores/001/660/386/themes/style/img-1528169277-1626147375-477d36b93f28cbb72b20e24d3fb163591626147376.png?486223581">
+                    <div class="display-flex info-pet flex-direction-column justify-evenly">
+                        <p><span class="font-body-brand">Nome:</span> <span class="font-body-black">Bidu</span></p>
+                        <p><span class="font-body-brand">Espécie:</span> <span class="font-body-black">Cachorro</span>
+                        </p>
+                        <p><span class="font-body-brand">Adotável:</span> <span class="font-body-black">Sim</span></p>
+                        <button class="btn btn-primary att-pet">Atualizar</button>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </main>
+    <footer class="display-flex align-items-center justify-center">
+        <p class="font-footer-brand">KenziePets | Todos os Direitos Reservados</p>
+    </footer>
 
 </body>
+
 </html>
