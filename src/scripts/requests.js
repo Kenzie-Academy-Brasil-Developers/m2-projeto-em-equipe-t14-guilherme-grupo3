@@ -16,6 +16,7 @@ const sendRequest = (options) => {
         return response.data
     }).catch(function (error) {
         console.error(error);
+        return error.response.data.message
     });
     return request
 }
