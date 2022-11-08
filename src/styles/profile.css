@@ -2,7 +2,11 @@ header {
     height: 80px;
 }
 
+nav {
+    gap: 23.5px;
+}
+
 .logotipo {
     height: 38px;
-    width: 10%;
+    width: 153px;
 }
