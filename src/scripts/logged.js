@@ -1,16 +1,16 @@
+import { getLocalStorage, removeStorage } from "./localStorage.js"
 import { getAllPets } from "./requests.js"
 
-// const token = localStorage.getItem('teste')
-const token = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2Njc5MjIwNzcsImV4cCI6MTY2ODUyNjg3Nywic3ViIjoiN2EyNDRjNmQtZGQyOS00YzI2LThkOGYtZGEzZGI1NDUzY2U4In0.XBdE5HR2bicnsKPDl-4DqaCAyCpNLvdHjs_lqxnhy0E`
-localStorage.setItem('teste', '123')
+const token = getLocalStorage()
 
-
+console.log(token)
 /* --------------- ENCERRAR A SESSÃO DO USUÁRIO --------------- */
 export const logout = () => {
     const btnLogout = document.querySelector('#btn-logout')
     btnLogout.onclick = (event) => {
         event.preventDefault()
-        localStorage.removeItem('teste')
+        removeStorage()
+        window.location.replace('../../index.html')
     }
 }
 

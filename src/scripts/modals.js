@@ -1,5 +1,5 @@
 /* --------------- CRIA CONTAINER PADRÃO PARA OS MODAIS -------------- */
-const createModalContainer = (form) => {
+export const createModalContainer = (form) => {
     const body = document.querySelector('body')
 
     const divContainer = document.createElement('div')
@@ -67,3 +67,5 @@ export const createModalRegister = () => {
         </form>
       `
     )
+
+}

@@ -1,5 +1,12 @@
-function getLocalStorage () {
-    const user = JSON.parse(localStorage.getItem ('token')) || ''
+export function getLocalStorage () {
+    const token = localStorage.getItem ('@kenziepets-ID')
+    return token
+}
 
-    return user
+export function setLocalStorage(token) {
+    localStorage.setItem('@kenziepets-ID', token)
+}
+
+export function removeStorage() {
+    localStorage.removeItem('@kenziepets-ID')
 }
