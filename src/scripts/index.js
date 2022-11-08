@@ -1,3 +1,6 @@
-import {registerUser} from './register.js'
+import { renderCardsHome } from "./render.js";
+import { getAllPets } from "./requests.js";
 
-registerUser()
+const petsProfile = await getAllPets()
+console.log(petsProfile)
+renderCardsHome(petsProfile)
