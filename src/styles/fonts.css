@@ -22,10 +22,22 @@
     color: var(--gray-1);
  }
 
+ .font-card-profile-brand{
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--color-primary);
+ }
+ 
  .font-card-brand{
     font-size: .875rem;
     font-weight: 400;
     color: var(--color-primary);
+ }
+
+ .font-card-profile-black{
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--gray-1);
  }
 
  .font-card-black{
