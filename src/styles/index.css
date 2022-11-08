@@ -1,0 +1,19 @@
+.header{
+    height: 5rem;
+    width: 100%;
+    border-bottom: 1px solid var(--grey-3);
+}
+
+.gap-btn-header{
+    gap:12.5px
+}
+
+.footer{
+    height: 3rem;
+    background-color: var(--color-primary-3);
+    margin-top: 5.125rem;
+}
+
+.margin-top-cards{
+    margin-top: 6.625rem;
+}
