@@ -29,6 +29,7 @@ export const registerUser = () => {
                 }
             })
             await createUser(body)
+
         })
 
     })   
