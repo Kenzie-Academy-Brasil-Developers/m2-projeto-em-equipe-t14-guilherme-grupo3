@@ -19,7 +19,7 @@ const renderPets = (pets) => {
     console.log(pets)
     const listPets = document.querySelector('main section ul')
     listPets.innerHTML = ''
-    pets.data.forEach(pet => {
+    pets.forEach(pet => {
         const { avatar_url, species, name, available_for_adoption: available} = pet
         if (available) {
            
@@ -46,7 +46,7 @@ const verifyPermission = async () => {
     if (token == '' || token == null) {
         window.location.replace('../../index.html')
     } else {
-        const pets = await getAllPets(token)
+        const pets = await getAllPets()
         renderPets(pets)
         logout()
     }
