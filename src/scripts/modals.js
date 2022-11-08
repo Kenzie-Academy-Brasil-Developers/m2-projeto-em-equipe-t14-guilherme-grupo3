@@ -82,21 +82,28 @@ export const createModalUpdateProfile = () => {
 
 // ------------------CRIA MODAL DE REGISTRO--------------------------
 export const createModalRegister = () => {
-    const modalContainer = createModalContainerRegister()
-    const button = document.querySelector("#close-modal")
-    const img = button.firstChild
-    img.src = "./src/images/close.svg"
 
-    modalContainer.insertAdjacentHTML('beforeend',
-        `<h2 class='font-brand'>Cadastrar</h2>
-        <form>
-            <input type="text" id="name" placeholder="Nome">
-            <input type="email" id="email" placeholder="Email">
-            <input type="password" id="password" placeholder="Senha">
-            <input type="text" id="avatar_url" placeholder="Avatar">
-            <button type="submit" class='btn btn-primary'>Cadastrar</button>
-            <p class="font-gray">Já tem cadastro? <a class="redirect-login">Clique aqui</a> para logar.</p>
-        </form>
-      `
-    )
+    const buttonRegister = document.querySelector(".button-register")
+
+    buttonRegister.addEventListener("click", function() { 
+
+        const modalContainer = createModalContainerRegister()
+        const button = document.querySelector("#close-modal")
+        const img = button.firstChild
+        img.src = "./src/images/close.svg"
+
+        modalContainer.insertAdjacentHTML('beforeend',
+    `<h2 class='font-brand'>Cadastrar</h2>
+    <form>
+        <input type="text" id="name" placeholder="Nome">
+        <input type="email" id="email" placeholder="Email">
+        <input type="password" id="password" placeholder="Senha">
+        <input type="text" id="avatar_url" placeholder="Avatar">
+        <button type="submit" class='btn btn-primary'>Cadastrar</button>
+        <p class="font-gray">Já tem cadastro? <a class="redirect-login">Clique aqui</a> para logar.</p>
+    </form>
+  `
+)})
+
+   
 }
