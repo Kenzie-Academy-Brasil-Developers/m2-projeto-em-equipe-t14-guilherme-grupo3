@@ -3,10 +3,10 @@ const urlBase = 'https://m2-api-adot-pet.herokuapp.com'
 /* {
     USUÁRIO DE TESTE:
 
-	"name": "grupo3",
-	"email": "grupo3@mail.com",
-	"password": "123",
-	"avatar_url": "https://w7.pngwing.com/pngs/798/436/png-transparent-computer-icons-user-profile-avatar-profile-heroes-black-profile-thumbnail.png"
+    "name": "grupo3",
+    "email": "grupo3@mail.com",
+    "password": "123",
+    "avatar_url": "https://w7.pngwing.com/pngs/798/436/png-transparent-computer-icons-user-profile-avatar-profile-heroes-black-profile-thumbnail.png"
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2Njc5MjIwNzcsImV4cCI6MTY2ODUyNjg3Nywic3ViIjoiN2EyNDRjNmQtZGQyOS00YzI2LThkOGYtZGEzZGI1NDUzY2U4In0.XBdE5HR2bicnsKPDl-4DqaCAyCpNLvdHjs_lqxnhy0E"
 } */
 
@@ -146,13 +146,10 @@ export const createPet = (token, body) => {
 
 
 /* --------------------- LISTAR TODOS OS PETS --------------------- */
-export const getAllPets = (token) => {
+export const getAllPets = () => {
     const options = {
         method: 'GET',
-        url: `${urlBase}/pets`,
-        headers: {
-            Authorization: `Bearer ${token}`
-        }
+        url: `${urlBase}/pets`
     };
 
     return sendRequest(options)
