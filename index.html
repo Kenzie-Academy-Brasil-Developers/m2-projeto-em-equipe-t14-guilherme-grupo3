@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,10 +8,82 @@
     <meta name="description" content="">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./src/styles/index.css">
+    <link rel="stylesheet" href="./src/styles/globalStyles.css">
+    <link rel="stylesheet" href="./src/styles/buttons.css">
+    <link rel="stylesheet" href="./src/styles/fonts.css">
+    <link rel="stylesheet" href="./src/styles/positioning.css">
+    <link rel="stylesheet" href="./src/styles/cards.css">
     <script type="module" defer src='./src/scripts/index.js'></script>
     <title>KenziePets - Home</title>
 </head>
+
 <body>
+    <header class="header display-flex  ">
+        <div class="display-flex container justify-between align-items-center">
+            <img src="./src/images/logo.svg" alt="logo KenziePets">
+            <div class="display-flex gap-btn-header">
+                <a class="btn btn-line" href="./src/pages/register.html">Register</a>
+                <a class="btn btn-primary" href="./src/pages/login.html">Login</a>
+            </div>
+        </div>
+    </header>
+    <main class="container-cards">
+        <ul class="margin-top-cards display-flex gap-card wrap">
+            <li class="card">
+                <img class="card-image" src="./src/images/herbert-goetsch-Wpixq0Z1dfo-unsplash.png" alt="">
+                <div class="card-text display-flex flex-direction-column">
+                    <span class="font-brand">Bidu</span>
+                    <span class="font-gray">Cachorro</span>
+                </div>
+            </li>
+            <li class="card">
+                <img class="card-image" src="./src/images/herbert-goetsch-Wpixq0Z1dfo-unsplash.png" alt="">
+                <div class="card-text display-flex flex-direction-column">
+                    <span class="font-brand">Bidu</span>
+                    <span class="font-gray">Cachorro</span>
+                </div>
+            </li>
+
+            <li class="card">
+                <img class="card-image" src="./src/images/herbert-goetsch-Wpixq0Z1dfo-unsplash.png" alt="">
+                <div class="card-text display-flex flex-direction-column">
+                    <span class="font-brand">Bidu</span>
+                    <span class="font-gray">Cachorro</span>
+                </div>
+            </li>
+
+            <li class="card">
+                <img class="card-image" src="./src/images/herbert-goetsch-Wpixq0Z1dfo-unsplash.png" alt="">
+                <div class="card-text display-flex flex-direction-column">
+                    <span class="font-brand">Bidu</span>
+                    <span class="font-gray">Cachorro</span>
+                </div>
+            </li>
+
+            <li class="card">
+                <img class="card-image" src="./src/images/herbert-goetsch-Wpixq0Z1dfo-unsplash.png" alt="">
+                <div class="card-text display-flex flex-direction-column">
+                    <span class="font-brand">Bidu</span>
+                    <span class="font-gray">Cachorro</span>
+                </div>
+            </li>
+
+            <li class="card">
+                <img class="card-image" src="./src/images/herbert-goetsch-Wpixq0Z1dfo-unsplash.png" alt="">
+                <div class="card-text display-flex flex-direction-column">
+                    <span class="font-brand">Bidu</span>
+                    <span class="font-gray">Cachorro</span>
+                </div>
+            </li>
+
+
+        </ul>
+
+    </main>
+    <footer class="footer align-items-center display-flex justify-center">
+        <span class="font-footer-brand">KenziePets | Todos Direitos Reservados</span>
+    </footer>
 
 </body>
+
 </html>

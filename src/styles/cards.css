@@ -1,3 +1,9 @@
+.container-cards{
+    width: 52%;
+    height: 70vh;
+    margin: 0 auto;
+}
+
 .card{
     width: 12.5rem;
     height: 17rem;
@@ -9,8 +15,14 @@
 .card-image{
     border-radius:4px 0 0 4px;
     height: 50%;
+    width: 100%;
+    object-fit: cover;
 }
 
 .card-text{
     padding: 16px;
+}
+
+.gap-card{
+    gap: 4rem;
 }
