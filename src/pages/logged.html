@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,18 +14,20 @@
     <link rel="stylesheet" href="../styles/fonts.css">
     <link rel="stylesheet" href="../styles/globalStyles.css">
     <script type="module" defer src='../scripts/logged.js'></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <title>KenziePets - Logado</title>
 </head>
+
 <body>
     <header class="container">
         <img src="../images/logo.svg" alt="logotipo KenziePets">
         <nav>
-            <button class="btn btn-line">Perfil</button>
-            <button class="btn btn-primary">Logout</button>
+            <a class="btn btn-line" href="../../src/pages/profile.html">Perfil</a>
+            <a class="btn btn-primary" href="../../index.html">Logout</a>
         </nav>
     </header>
     <main>
-        <section class="container">
+        <section>
             <ul>
                 <li>
                     <img src="../images//img1.png" alt="">
@@ -81,4 +84,5 @@
         <p class="font-footer-brand">KenziePets | Todos os Direitos Reservados</p>
     </footer>
 </body>
+
 </html>
