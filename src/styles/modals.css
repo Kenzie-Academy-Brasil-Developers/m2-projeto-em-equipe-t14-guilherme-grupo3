@@ -74,4 +74,9 @@ border-radius: 0 0 16px 16px;
     background-color: var(--red);
 }
 
+a {
+    color: var(--color-primary);
+    cursor: pointer;
+}
+
 
