@@ -38,3 +38,40 @@ nav {
     margin-top: 181px;
     padding: 24px 24px;
 }
+
+.pets-section {
+    margin-top: 96px;
+    margin-left: 25vw;
+    margin-right: 25vw;
+    width: 75vw;
+
+}
+
+.register-pet-button {
+    width: fit-content;
+    margin: 0px 8%;
+}
+
+ul {
+    margin: 42px 0px;
+    width: 100%;
+    gap: 64px;
+    place-content: center;
+}
+
+li {
+    width: 40%;
+    min-width: 240px;
+    height: 200px;
+    box-shadow: 0px 0px 5px rgba(78, 32, 150, 0.25);
+    border-radius: 4px;
+}
+
+.card-image {
+    width: 33%;
+    height: 100%;
+}
+
+.info-pet {
+    padding: 42px 36px;
+}
