@@ -30,7 +30,7 @@ export const createModalContainer = (form) => {
     
 }
 
-const createModalContainerRegister = () => {
+const createModalContainerDefault = () => {
     const body = document.querySelector('body')
 
     const divContainer = document.createElement('div')
@@ -65,14 +65,13 @@ const createModalContainerRegister = () => {
 
 /* --------------- CRIA MODAL DE ATUALIZAÇÃO DE PERFIL -------------- */
 export const createModalUpdateProfile = () => {
-    const modalContainer = createModalContainer()
+    const modalContainer = createModalContainerDefault()
 
     modalContainer.insertAdjacentHTML('beforeend',
         `<h2 class='font-brand'>Atualizar perfil</h2>
         <form>
-            <input type="text" placeholder="Nome">
-            <input type="text" placeholder="Email">
-            <input type="text" placeholder="Avatar">
+            <input type="text" id="name" placeholder="Nome">
+            <input type="text" id="avatar_url" placeholder="Avatar">
             <button class='btn btn-primary'>Atualizar</button>
         </form>
         `
@@ -87,7 +86,7 @@ export const createModalRegister = () => {
 
     buttonRegister.addEventListener("click", function() { 
 
-        const modalContainer = createModalContainerRegister()
+        const modalContainer = createModalContainerDefault()
         const button = document.querySelector("#close-modal")
         const img = button.firstChild
         img.src = "./src/images/close.svg"

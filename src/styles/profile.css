@@ -49,6 +49,10 @@ nav {
 
 .register-pet {
     width: fit-content;
+}
+
+.register-pet-margin {
+    width: fit-content;
     margin: 0px 8%;
 }
 
@@ -56,6 +60,10 @@ ul {
     margin: 42px 0px;
     width: 100%;
     gap: 64px;
+    
+}
+
+.ul-place-center {
     place-content: center;
 }
 

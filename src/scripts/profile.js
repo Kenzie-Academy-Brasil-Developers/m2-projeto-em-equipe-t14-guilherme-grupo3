@@ -1,7 +1,34 @@
-import { getPetsUser, getUserProfile } from "./requests.js"
+import { createModalUpdateProfile } from "./modals.js";
+import { getPetsUser, getUserProfile, updateProfile } from "./requests.js"
+
+const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2Njc5MjIwNzcsImV4cCI6MTY2ODUyNjg3Nywic3ViIjoiN2EyNDRjNmQtZGQyOS00YzI2LThkOGYtZGEzZGI1NDUzY2U4In0.XBdE5HR2bicnsKPDl-4DqaCAyCpNLvdHjs_lqxnhy0E"
+
+const attUser = () => {
+
+    const button = document.querySelector(".att-profile")
+
+    button.addEventListener("click", async function () {
+        createModalUpdateProfile()
+
+        const form = document.querySelector("form")
+        const elements = [...form.elements]
+
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault()
+            const body = {}
+
+            elements.forEach((element) => {
+                if (element.tagName == "INPUT" && element.value !== "") {
+                    body[element.id] = element.value
+                }
+            })
+            await updateProfile(token, body)
+        })
+    })
+}
 
 const insertPets = async () => {
-    const pets = await getPetsUser("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2Njc5MjIwNzcsImV4cCI6MTY2ODUyNjg3Nywic3ViIjoiN2EyNDRjNmQtZGQyOS00YzI2LThkOGYtZGEzZGI1NDUzY2U4In0.XBdE5HR2bicnsKPDl-4DqaCAyCpNLvdHjs_lqxnhy0E")
+    const pets = await getPetsUser(token)
     pets.forEach(element => {
         const ul = document.querySelector("ul")
         const li = document.createElement("li")
@@ -17,22 +44,30 @@ const insertPets = async () => {
         const spanAdopt = document.createElement("span")
         const spanAdoptReal = document.createElement("span")
         const button = document.createElement("button")
+        const buttonRegisterPet = document.querySelector(".register-pet")
+
+        if (pets.length > 1) {
+            buttonRegisterPet.classList = "register-pet register-pet-margin btn btn-green"
+            ul.classList = "display-flex wrap ul-place-center"
+        } else {
+            buttonRegisterPet.classList = "register-pet btn btn-green"
+        }
 
         li.classList = "display-flex"
         img.classList = "card-image"
         img.src = `${element.avatar_url}`
         div.classList = "display-flex info-pet flex-direction-column justify-evenly"
         spanNome.classList = "font-body-brand"
-        spanNome.innerText = 'Nome:'
+        spanNome.innerText = 'Nome: '
         spanNomeReal.classList = "font-body-brand"
         spanNomeReal.innerText = `${element.name}`
         spanEspecie.classList = "font-body-brand"
-        spanEspecie.innerText = 'Espécie:'
+        spanEspecie.innerText = 'Espécie: '
         spanEspecieReal.classList = "font-body-brand"
         spanEspecieReal.innerText = `${element.species}`
 
         spanAdopt.classList = "font-body-brand"
-        spanAdopt.innerText = 'Adotável:'
+        spanAdopt.innerText = 'Adotável: '
         spanAdoptReal.classList = "font-body-brand"
         if (element.available_for_adoption == true) {
             spanAdoptReal.innerText = "Sim"
@@ -58,7 +93,7 @@ const insertPets = async () => {
 }
 
 const dinamicPage = async () => {
-    const user = await getUserProfile("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2Njc5MjIwNzcsImV4cCI6MTY2ODUyNjg3Nywic3ViIjoiN2EyNDRjNmQtZGQyOS00YzI2LThkOGYtZGEzZGI1NDUzY2U4In0.XBdE5HR2bicnsKPDl-4DqaCAyCpNLvdHjs_lqxnhy0E")
+    const user = await getUserProfile(token)
     const main = document.querySelector("main")
 
     main.insertAdjacentHTML("afterbegin", ` <section class="display-flex background-purple justify-center">
@@ -83,7 +118,11 @@ const dinamicPage = async () => {
     </ul>
 `)
 
-insertPets()
+    insertPets()
+    attUser()
+
 }
+
+
 
 dinamicPage()
