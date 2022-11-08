@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="./src/styles/fonts.css">
     <link rel="stylesheet" href="./src/styles/positioning.css">
     <link rel="stylesheet" href="./src/styles/cards.css">
+    <link rel="stylesheet" href="./src/styles/modals.css">
     <script type="module" defer src='./src/scripts/index.js'></script>
     <script defer src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <title>KenziePets - Home</title>
@@ -23,7 +24,7 @@
         <div class="display-flex container justify-between align-items-center">
             <img src="./src/images/logo.svg" alt="logo KenziePets">
             <div class="display-flex gap-btn-header">
-                <a class="btn btn-line" href="./src/pages/register.html">Register</a>
+                <a class="btn btn-line button-register">Register</a>
                 <a class="btn btn-primary" href="./src/pages/login.html">Login</a>
             </div>
         </div>
@@ -45,7 +46,8 @@
     <footer class="footer align-items-center display-flex justify-center">
         <span class="font-footer-brand">KenziePets | Todos Direitos Reservados</span>
     </footer>
-
+    
+    <script type="module" src="src/scripts/homePageLoggedOut.js"></script>
 </body>
 
 </html>
