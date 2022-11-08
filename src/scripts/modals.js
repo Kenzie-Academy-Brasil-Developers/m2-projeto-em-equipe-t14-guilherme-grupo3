@@ -67,3 +67,19 @@ export const createModalRegister = () => {
         </form>
       `
     )
+}
+
+//------------------CRIA MODAL DE DELETE----------------------------
+
+export const createModalDeleteProfile  = () => {
+    const modalContainer = createModalContainer()
+
+    modalContainer.insertAdjacentHTML('beforeend',
+        `<h2 class='font-brand'>Deseja mesmo deletar sua conta?</h2>
+        <div>
+            <button  class='btn btn-primary'>Não desejo deletar minha conta</button>
+            <button  class='btn bbtn-line-red'>Quero deletar minha conta</button>
+        </div>
+      `
+    )
+}
