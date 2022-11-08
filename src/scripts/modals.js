@@ -1,5 +1,5 @@
 /* --------------- CRIA CONTAINER PADRÃO PARA OS MODAIS -------------- */
-export const createModalContainer = () => {
+const createModalContainer = (form) => {
     const body = document.querySelector('body')
 
     const divContainer = document.createElement('div')
@@ -14,11 +14,12 @@ export const createModalContainer = () => {
     divModal.className = 'modal'
     divHeader.className = 'header-modal'
     button.id = 'close-modal'
-    img.src = '../images/close.svg'
+    img.src = './src/images/close.svg'
     divContent.className = 'content-modal'
     divFooter.classList = 'footer-modal'
 
     divContainer.appendChild(divModal)
+    divContent.appendChild(form)
     divModal.append(divHeader, divContent, divFooter)
     divHeader.appendChild(button)
     button.appendChild(img)
@@ -26,8 +27,7 @@ export const createModalContainer = () => {
     body.appendChild(divContainer)
 
     button.onclick = () => divContainer.remove()
-
-    return divContent
+    
 }
 
 
@@ -47,8 +47,8 @@ export const createModalUpdateProfile = () => {
     )
 }
 
-// ------------------CRIA MODAL DE REGISTRO--------------------------
 
+// ------------------CRIA MODAL DE REGISTRO--------------------------
 export const createModalRegister = () => {
     const modalContainer = createModalContainer()
     const button = document.querySelector("#close-modal")
@@ -67,4 +67,3 @@ export const createModalRegister = () => {
         </form>
       `
     )
-}
