@@ -87,15 +87,3 @@ insertPets()
 }
 
 dinamicPage()
-
-{/* <li class="display-flex">
-<img class="card-image"
-    src="https://d3ugyf2ht6aenh.cloudfront.net/stores/001/660/386/themes/style/img-1528169277-1626147375-477d36b93f28cbb72b20e24d3fb163591626147376.png?486223581">
-<div class="display-flex info-pet flex-direction-column justify-evenly">
-    <p><span class="font-body-brand">Nome:</span> <span class="font-body-black">Bidu</span></p>
-    <p><span class="font-body-brand">Espécie:</span> <span class="font-body-black">Cachorro</span>
-    </p>
-    <p><span class="font-body-brand">Adotável:</span> <span class="font-body-black">Sim</span></p>
-    <button class="btn btn-primary att-pet">Atualizar</button>
-</div>
-</li> */}
