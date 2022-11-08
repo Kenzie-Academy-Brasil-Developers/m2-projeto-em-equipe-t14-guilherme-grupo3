@@ -1,5 +1,5 @@
 /* --------------- CRIA CONTAINER PADRÃO PARA OS MODAIS -------------- */
-const createModalContainer = () => {
+const createModalContainer = (form) => {
     const body = document.querySelector('body')
 
     const divContainer = document.createElement('div')
@@ -14,11 +14,12 @@ const createModalContainer = () => {
     divModal.className = 'modal'
     divHeader.className = 'header-modal'
     button.id = 'close-modal'
-    img.src = '../images/close.svg'
+    img.src = './src/images/close.svg'
     divContent.className = 'content-modal'
     divFooter.classList = 'footer-modal'
 
     divContainer.appendChild(divModal)
+    divContent.appendChild(form)
     divModal.append(divHeader, divContent, divFooter)
     divHeader.appendChild(button)
     button.appendChild(img)
@@ -26,13 +27,12 @@ const createModalContainer = () => {
     body.appendChild(divContainer)
 
     button.onclick = () => divContainer.remove()
-
-    return divContent
+    
 }
 
 
 /* --------------- CRIA MODAL DE ATUALIZAÇÃO DE PERFIL -------------- */
-export const createModalUpdateProfile = () => {
+const createModalUpdateProfile = () => {
     const modalContainer = createModalContainer()
 
     modalContainer.insertAdjacentHTML('beforeend',
@@ -45,4 +45,9 @@ export const createModalUpdateProfile = () => {
         </form>
         `
     )
+}
+
+export {
+    createModalContainer,
+    createModalUpdateProfile
 }
