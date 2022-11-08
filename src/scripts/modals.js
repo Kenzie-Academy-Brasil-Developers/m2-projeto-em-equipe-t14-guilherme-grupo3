@@ -1,5 +1,7 @@
+import { deleteProfile } from "./requests.js"
+
 /* --------------- CRIA CONTAINER PADRÃO PARA OS MODAIS -------------- */
-const createModalContainer = (form) => {
+export const createModalContainer = () => {
     const body = document.querySelector('body')
 
     const divContainer = document.createElement('div')
@@ -19,7 +21,6 @@ const createModalContainer = (form) => {
     divFooter.classList = 'footer-modal'
 
     divContainer.appendChild(divModal)
-    divContent.appendChild(form)
     divModal.append(divHeader, divContent, divFooter)
     divHeader.appendChild(button)
     button.appendChild(img)
@@ -28,6 +29,7 @@ const createModalContainer = (form) => {
 
     button.onclick = () => divContainer.remove()
     
+    return divContent
 }
 
 
@@ -48,19 +50,16 @@ export const createModalUpdateProfile = () => {
 }
 
 
-// ------------------CRIA MODAL DE REGISTRO--------------------------
+/* --------------- CRIA MODAL DE REGISTRO -------------- */
 export const createModalRegister = () => {
     const modalContainer = createModalContainer()
-    const button = document.querySelector("#close-modal")
-    const img = button.firstChild
-    img.src = "./src/images/close.svg"
 
     modalContainer.insertAdjacentHTML('beforeend',
         `<h2 class='font-brand'>Cadastrar</h2>
         <form>
             <input type="text" id="name" placeholder="Nome">
-            <input type="text" id="email" placeholder="Email">
-            <input type="text" id="password" placeholder="Senha">
+            <input type="email" id="email" placeholder="Email">
+            <input type="password" id="password" placeholder="Senha">
             <input type="text" id="avatar_url" placeholder="Avatar">
             <button type="submit" class='btn btn-primary'>Cadastrar</button>
             <p class="font-gray">Já tem cadastro? <a class="redirect-login">Clique aqui</a> para logar.</p>
@@ -69,17 +68,48 @@ export const createModalRegister = () => {
     )
 }
 
-//------------------CRIA MODAL DE DELETE----------------------------
 
-export const createModalDeleteProfile  = () => {
+/* --------------- CRIA MODAL DE LOGIN -------------- */
+export const createModalLogin = () => {
     const modalContainer = createModalContainer()
 
     modalContainer.insertAdjacentHTML('beforeend',
-        `<h2 class='font-brand'>Deseja mesmo deletar sua conta?</h2>
-        <div>
-            <button  class='btn btn-primary'>Não desejo deletar minha conta</button>
-            <button  class='btn bbtn-line-red'>Quero deletar minha conta</button>
-        </div>
+        `<h2 class='font-brand'>Login</h2>
+        <form>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Senha" required>
+            <button type="submit" class='btn btn-primary'>Entrar</button>
+            <p class="font-gray">Não tem cadastro? <a class="redirect-register">Clique aqui</a> para se cadastrar.</p>
+        </form>
       `
     )
+
+}
+
+// ---------------------- MODAL DELETE PROFILE ----------------
+
+export const modalDeleteProfile = () =>{
+    const modalContainer = createModalContainer()
+    
+    const h2 = document.createElement('h2')
+    h2.classList = 'font-brand'
+    h2.innerText = 'Deseja mesmo deletar a sua conta?'
+
+    const btnNoDelete = document.createElement('button')
+    btnNoDelete.classList =  'btn btn-primary'
+    btnNoDelete.innerText = 'Não desejo deletar minha conta'
+    btnNoDelete.addEventListener('click', ()=>{
+        document.querySelector('.modal-container').remove()
+    })
+
+    const btnDelete = document.createElement('button')
+    btnDelete.classList =  'btn btn-line-red'
+    btnDelete.innerText = 'Quero deletar minha conta'
+    btnDelete.addEventListener('click', ()=>{
+        deleteProfile(token)
+    })
+
+    modalContainer.append(h2, btnNoDelete, btnDelete)
+    
+
 }
