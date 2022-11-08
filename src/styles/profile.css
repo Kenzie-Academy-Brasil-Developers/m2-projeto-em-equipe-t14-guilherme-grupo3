@@ -89,3 +89,8 @@ footer {
     height: 48px;
     background-color: var(--color-primary-3);
 }
+.profile-buttons-div {
+    gap: 6px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}

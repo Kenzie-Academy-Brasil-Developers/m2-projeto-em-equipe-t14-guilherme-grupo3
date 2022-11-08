@@ -104,7 +104,7 @@ const dinamicPage = async () => {
         <h2 class="font-brand text-align-center">Dados pessoais</h2>
         <p><span class="font-body-brand">Nome:</span> <span class="font-body-black">${user.name}</span></p>
         <p><span class="font-body-brand">E-mail:</span> <span class="font-body-black">${user.email}</span></p>
-        <div class="display-flex justify-evenly">
+        <div class="display-flex profile-buttons-div">
             <button class="btn btn-primary att-profile" type="button">Atualizar informações</button>
             <button class="btn btn-line-red delete-profile" type="button">Deletar conta</button>
         </div>

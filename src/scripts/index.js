@@ -6,5 +6,4 @@ import { registerUser } from "./register.js";
 const petsProfile = await getAllPets()
 // console.log(petsProfile)
 renderCardsHome(petsProfile)
-createModalRegister()
 registerUser()
