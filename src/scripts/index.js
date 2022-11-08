@@ -4,7 +4,7 @@ import { createModalRegister } from "./modals.js";
 import { registerUser } from "./register.js";
 
 const petsProfile = await getAllPets()
-console.log(petsProfile)
+// console.log(petsProfile)
 renderCardsHome(petsProfile)
 createModalRegister()
 registerUser()
