@@ -14,7 +14,7 @@ export const createModalContainer = () => {
     divModal.className = 'modal'
     divHeader.className = 'header-modal'
     button.id = 'close-modal'
-    img.src = './src/images/close.svg'
+    img.src = '../images/close.svg'
     divContent.className = 'content-modal'
     divFooter.classList = 'footer-modal'
 
@@ -38,9 +38,8 @@ export const createModalUpdateProfile = () => {
     modalContainer.insertAdjacentHTML('beforeend',
         `<h2 class='font-brand'>Atualizar perfil</h2>
         <form>
-            <input type="text" placeholder="Nome">
-            <input type="text" placeholder="Email">
-            <input type="text" placeholder="Avatar">
+            <input type="text" id="name" placeholder="Nome">
+            <input type="text" id="avatar_url" placeholder="Avatar">
             <button class='btn btn-primary'>Atualizar</button>
         </form>
         `
@@ -51,6 +50,9 @@ export const createModalUpdateProfile = () => {
 /* --------------- CRIA MODAL DE REGISTRO -------------- */
 export const createModalRegister = () => {
     const modalContainer = createModalContainer()
+    const button = document.querySelector("#close-modal")
+    const img = button.firstChild
+    img.src = "./src/images/close.svg"
 
     modalContainer.insertAdjacentHTML('beforeend',
         `<h2 class='font-brand'>Cadastrar</h2>
@@ -70,6 +72,10 @@ export const createModalRegister = () => {
 /* --------------- CRIA MODAL DE LOGIN -------------- */
 export const createModalLogin = () => {
     const modalContainer = createModalContainer()
+    const button = document.querySelector("#close-modal")
+    const img = button.firstChild
+    img.src = "./src/images/close.svg"
+
 
     modalContainer.insertAdjacentHTML('beforeend',
         `<h2 class='font-brand'>Login</h2>
