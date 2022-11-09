@@ -1,5 +1,5 @@
 import { createModalUpdateProfile, createModalRegisterPet,modalDeleteProfile, createModalAttPet } from "./modals.js";
-import { getPetsUser, getUserProfile, updateProfile, createPet, updatePet } from "./requests.js"
+import { getPetsUser, getUserProfile, updateProfile, createPet, updatePet, getMyAdoptions } from "./requests.js"
 import { getLocalStorage, removeStorage } from "./localStorage.js"
 import { toast } from "./toasts.js";
 
@@ -74,12 +74,13 @@ const modalRegisterPet = (button) => {
             toast("success", "Criado com sucesso, atualizando...")
             modal.remove()
             setTimeout(() => {
-                const ul = document.querySelector("ul").childNodes
+                const ul = document.querySelector("ul")
                 const array = [... ul]
                 array.forEach(element => 
                     element.remove()
                 );
                 insertPets()
+                insertAdoptedPets()
             }, 4000);
         
         })
@@ -87,9 +88,12 @@ const modalRegisterPet = (button) => {
 }
 
 const insertPets = async () => {
-    const pets = await getPetsUser(token)
+    const array = await getPetsUser(token)
+
+    const pets = array.filter(element => element.available_for_adoption == true )
     pets.forEach(element => {
-        const ul = document.querySelector("ul")
+        const ul = document.querySelector(".created-pets")
+        const textList = document.querySelector(".text-list")
         const li = document.createElement("li")
         const img = document.createElement("img")
         const div = document.createElement("div")
@@ -109,10 +113,13 @@ const insertPets = async () => {
         const buttonRegisterPet = document.querySelector(".register-pet")
 
         if (pets.length > 1) {
+
             buttonRegisterPet.classList = "register-pet register-pet-margin btn btn-green"
-            ul.classList = "display-flex wrap ul-place-center"
+            ul.classList = "display-flex wrap created-pets ul-place-center"
+            textList.classList = "text-list register-pet-margin"
         } else {
             buttonRegisterPet.classList = "register-pet btn btn-green"
+            textList.classList = "text-list"
         }
 
         li.classList = "display-flex"
@@ -159,6 +166,69 @@ const insertPets = async () => {
     attPet()
 }
 
+const insertAdoptedPets = async () => {
+    const pets = await getPetsUser(token)
+
+    const adoptedPets = pets.filter(element => element.available_for_adoption == false )
+    console.log(adoptedPets)
+
+    adoptedPets.forEach(element => {
+        const ul = document.querySelector(".adopted-pets")
+        const textList = document.querySelector(".text-adopt")
+        const li = document.createElement("li")
+        const img = document.createElement("img")
+        const div = document.createElement("div")
+        const nome = document.createElement("p")
+        const spanNome = document.createElement("span")
+        const spanNomeReal = document.createElement("span")
+        const especie = document.createElement("p")
+        const spanEspecie = document.createElement("span")
+        const spanEspecieReal = document.createElement("span")
+        const bread = document.createElement("p")
+        const spanBread = document.createElement("span")
+        const spanBreadReal = document.createElement("span")
+
+        if (adoptedPets.length > 1) {
+
+           
+            ul.classList = "display-flex wrap adopted-pets ul-place-center"
+            textList.classList = "text-list register-pet-margin"
+        } else {
+   
+            textList.classList = "text-list"
+        }
+
+        li.classList = "display-flex"
+        img.classList = "card-image"
+        img.src = `${element.avatar_url}`
+        div.classList = "display-flex info-pet flex-direction-column justify-evenly"
+        spanNome.classList = "font-body-brand"
+        spanNome.innerText = 'Nome: '
+        spanNomeReal.classList = "font-body-brand"
+        spanNomeReal.innerText = `${element.name}`
+        spanEspecie.classList = "font-body-brand"
+        spanEspecie.innerText = 'Espécie: '
+        spanEspecieReal.classList = "font-body-brand"
+        spanEspecieReal.innerText = `${element.species}`
+        spanBread.classList = "font-body-brand"
+        spanBread.innerText = 'Raça: '
+        spanBreadReal.classList = "font-body-brand"
+        spanBreadReal.innerText = `${element.bread}`
+
+
+        nome.append(spanNome, spanNomeReal)
+        especie.append(spanEspecie, spanEspecieReal)
+        bread.append(spanBread, spanBreadReal)
+
+        div.append(nome, especie, bread)
+
+        li.append(img, div)
+
+        ul.appendChild(li)
+    });
+    attPet()
+}
+
 const dinamicPage = async () => {
     const user = await getUserProfile(token)
     const main = document.querySelector("main")
@@ -190,13 +260,18 @@ const dinamicPage = async () => {
     <div>
         <button class="register-pet btn btn-green" type="button">Cadastrar novo pet</button>
     </div>
-    <ul class="display-flex wrap">
+    <h2 class="text-list register-pet-margin">Pets Cadastrados</h2>
+    <ul class="display-flex wrap created-pets">
+    </ul>
+    <h2 class="text-adopt register-pet-margin">Pets Adotados</h2>
+    <ul class="display-flex wrap adopted-pets">
     </ul>
 `)
 
 const registerNewPet = document.querySelector('.register-pet')
     
     insertPets()
+    insertAdoptedPets()
     attUser()
     modalRegisterPet(registerNewPet)
 
@@ -248,6 +323,7 @@ const attPet = () => {
                          element.remove()
                      );
                      insertPets()
+                     insertAdoptedPets()
                  }, 4000);
 
             })

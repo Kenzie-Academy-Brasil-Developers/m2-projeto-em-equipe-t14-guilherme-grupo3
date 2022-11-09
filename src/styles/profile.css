@@ -95,6 +95,10 @@ footer {
     flex-wrap: wrap;
 }
 
+.text-list {
+    margin-top: 20px;
+}
+
 @media(max-width: 400px) {
     .profile-image{
         transform: scale(0.8);
