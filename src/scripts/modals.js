@@ -72,7 +72,6 @@ export const createModalRegister = () => {
 
     redirect.addEventListener('click', () => {
         container.remove()
-        createModalLogin()
     })
 }
 
