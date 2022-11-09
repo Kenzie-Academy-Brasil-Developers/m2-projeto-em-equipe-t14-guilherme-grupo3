@@ -1,6 +1,7 @@
 import { createModalUpdateProfile, createModalRegisterPet,modalDeleteProfile } from "./modals.js";
 import { getPetsUser, getUserProfile, updateProfile, createPet } from "./requests.js"
 import { getLocalStorage, removeStorage } from "./localStorage.js"
+import { toast } from "./toasts.js";
 
 export const logoutProfile = () => {
     const btnLogout = document.querySelector('#btn-logout')
@@ -69,7 +70,12 @@ const modalRegisterPet = (button) => {
             })
 
             await createPet(token, body)
+            toast("success", "Criado com sucesso, atualizando...")
             modal.remove()
+            setTimeout(() => {
+                window.location.reload(true)
+            }, 4000);
+        
         })
     })
 }
@@ -187,6 +193,7 @@ const registerNewPet = document.querySelector('.register-pet')
     insertPets()
     attUser()
     modalRegisterPet(registerNewPet)
+
 }
 
 
