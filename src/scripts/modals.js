@@ -60,10 +60,10 @@ export const createModalRegister = () => {
     modalContainer.insertAdjacentHTML('beforeend',
         `<h2 class='font-brand'>Cadastrar</h2>
         <form>
-            <input type="text" id="name" placeholder="Nome">
-            <input type="email" id="email" placeholder="Email">
-            <input type="password" id="password" placeholder="Senha">
-            <input type="text" id="avatar_url" placeholder="Avatar">
+            <input type="text" id="name" placeholder="Nome" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Senha" required>
+            <input type="text" id="avatar_url" placeholder="Avatar" required>
             <button type="submit" class='btn btn-primary'>Cadastrar</button>
             <p class="font-gray">Já tem cadastro? <a class="redirect-login">Clique aqui</a> para logar.</p>
         </form>

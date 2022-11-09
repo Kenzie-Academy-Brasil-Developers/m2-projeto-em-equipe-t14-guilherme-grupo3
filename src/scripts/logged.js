@@ -3,7 +3,6 @@ import { getAllPets } from "./requests.js"
 
 const token = getLocalStorage()
 
-console.log(token)
 /* --------------- ENCERRAR A SESSÃO DO USUÁRIO --------------- */
 export const logout = () => {
     const btnLogout = document.querySelector('#btn-logout')
@@ -16,7 +15,6 @@ export const logout = () => {
 
 
 const renderPets = (pets) => {
-    console.log(pets)
     const listPets = document.querySelector('main section ul')
     listPets.innerHTML = ''
     pets.forEach(pet => {
