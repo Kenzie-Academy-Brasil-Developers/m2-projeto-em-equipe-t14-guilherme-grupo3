@@ -1,3 +1,6 @@
+import { setLocalStorage } from "./localStorage.js";
+import { toast } from "./toasts.js";
+
 const urlBase = 'https://m2-api-adot-pet.herokuapp.com'
 
 /* {
@@ -12,7 +15,6 @@ const urlBase = 'https://m2-api-adot-pet.herokuapp.com'
 
 const sendRequest = (options) => {
     const request = axios.request(options).then(response => {
-        // console.log(response.data);
         return response.data
     }).catch(function (error) {
         console.error(error);
@@ -27,7 +29,7 @@ const sendRequest = (options) => {
 
 
 /* ------------------ EFETUAR LOGIN -------------------*/
-export const login = (body) => {
+export const login = async(body) => {
     const options = {
         method: 'POST',
         url: `${urlBase}/session/login`,
@@ -36,7 +38,21 @@ export const login = (body) => {
         // { email: 'rafael32@mail.com', password: '123456' }
     };
 
-    return sendRequest(options)
+    const response = await sendRequest(options)
+    console.log(response)
+    
+    if (response == 'Email not found' || response == 'please inform a valid email format') {
+        toast("fail", "Email não encontrado!")
+    } else if (response == 'Please verify the informed password and try again') {
+        toast("fail","Senha inválida!")
+    } else {
+        setLocalStorage(response.token)
+        toast("success","Logado com sucesso!")
+        setTimeout(() => {
+            window.location.replace('./src/pages/logged.html')
+        }, 3000); 
+    }
+    // return sendRequest(options)
 }
 
 
