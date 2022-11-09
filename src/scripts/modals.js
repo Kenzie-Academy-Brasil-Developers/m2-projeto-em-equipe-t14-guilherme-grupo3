@@ -165,3 +165,30 @@ export const createModalRegisterPet = () => {
       `
     )
 }
+
+/* --------------- CRIA MODAL DE ATUALIZAÇÃO DE PET -------------- */
+export const createModalAttPet = () => {
+    const modalContainer = createModalContainer()
+    const button = document.querySelector("#close-modal")
+    const img = button.firstChild
+    img.src = "/src/images/close.svg"
+
+    modalContainer.insertAdjacentHTML('beforeend',
+        `<h2 class='font-brand'>Atualizar pet</h2>
+        <form>
+            <input type="text" id="name" placeholder="Nome" required>
+            <input type="text" id="bread" placeholder="Raça" required>
+            <select required>
+            <option selected disabled>Selecione a espécie do pet</option>
+            <option value="Cachorro">Cachorro</option>
+            <option value="Gato">Gato</option>
+            <option value="Aves">Aves</option>
+            <option value="Repteis">Repteis</option>
+            <option value="Outros">Outros</option>
+            </select>
+            <input type="text" id="avatar_url" placeholder="Avatar" required>
+            <button type="submit" class='btn btn-primary'>Atualizar</button>
+        </form>
+      `
+    )
+}
