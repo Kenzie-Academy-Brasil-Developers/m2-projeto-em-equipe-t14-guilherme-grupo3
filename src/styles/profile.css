@@ -2,14 +2,6 @@
     width: 100%;
 }
 
-header {
-    height: 80px;
-}
-
-nav {
-    gap: 11px;
-}
-
 .logotipo {
     height: 38px;
     width: 153px;
@@ -93,12 +85,4 @@ footer {
     gap: 6px;
     justify-content: space-around;
     flex-wrap: wrap;
-}
-
-@media(max-width: 400px) {
-    nav {
-        flex-wrap: wrap;
-        gap: 5px;
-        justify-content: center;
-    }
 }
