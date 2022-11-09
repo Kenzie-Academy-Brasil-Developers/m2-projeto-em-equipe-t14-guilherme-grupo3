@@ -74,6 +74,7 @@ li {
 
 .info-pet {
     padding: 42px 36px;
+    gap: 6px;
 }
 
 footer {

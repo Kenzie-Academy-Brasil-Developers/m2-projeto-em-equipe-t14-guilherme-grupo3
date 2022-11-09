@@ -87,6 +87,9 @@ const insertPets = async () => {
         const especie = document.createElement("p")
         const spanEspecie = document.createElement("span")
         const spanEspecieReal = document.createElement("span")
+        const bread = document.createElement("p")
+        const spanBread = document.createElement("span")
+        const spanBreadReal = document.createElement("span")
         const adopt = document.createElement("p")
         const spanAdopt = document.createElement("span")
         const spanAdoptReal = document.createElement("span")
@@ -112,6 +115,10 @@ const insertPets = async () => {
         spanEspecie.innerText = 'Espécie: '
         spanEspecieReal.classList = "font-body-brand"
         spanEspecieReal.innerText = `${element.species}`
+        spanBread.classList = "font-body-brand"
+        spanBread.innerText = 'Raça: '
+        spanBreadReal.classList = "font-body-brand"
+        spanBreadReal.innerText = `${element.bread}`
 
         spanAdopt.classList = "font-body-brand"
         spanAdopt.innerText = 'Adotável: '
@@ -129,8 +136,9 @@ const insertPets = async () => {
         nome.append(spanNome, spanNomeReal)
         especie.append(spanEspecie, spanEspecieReal)
         adopt.append(spanAdopt, spanAdoptReal)
+        bread.append(spanBread, spanBreadReal)
 
-        div.append(nome, especie, adopt, button)
+        div.append(nome, especie, bread, adopt, button)
 
         li.append(img, div)
 
