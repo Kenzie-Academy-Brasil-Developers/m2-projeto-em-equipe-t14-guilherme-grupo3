@@ -87,6 +87,7 @@ li {
 }
 
 .info-pet {
+    width: 100%;
     padding: 42px 36px;
     gap: 15px;
 }
@@ -144,6 +145,7 @@ footer {
 
     div.info-pet {
         padding: 10px;
+        
     }
 
     div.content-modal {
