@@ -193,3 +193,22 @@ export const createModalAttPet = () => {
       `
     )
 }
+
+
+/* --------------- CRIA MODAL DE ADOÇÃO DE PET -------------- */
+export const createModalAdopt = () => {
+    const modalContainer = createModalContainer()
+    const button = document.querySelector("#close-modal")
+    const img = button.firstChild
+    img.src = "/src/images/close.svg"
+
+    modalContainer.insertAdjacentHTML('beforeend',
+        `<h2 class='font-brand'>Adotar pet</h2>
+        <form>
+            <h2>Tem certeza que deseja adotar o pet ?</h2>
+            <h3>A responsabilidade do cuidado pet é inteiramente do guardião, após aceitar.</h3>
+            <button type="submit" class='btn btn-primary'>Adotar</button>
+        </form>
+      `
+    )
+}
