@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="./src/styles/positioning.css">
     <link rel="stylesheet" href="./src/styles/cards.css">
     <link rel="stylesheet" href="./src/styles/modals.css">
+    <link rel="stylesheet" href="./src/styles/header.css">
     <script defer src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script type="module" src="src/scripts/login.js"></script>
     <script type="module" defer src='./src/scripts/index.js'></script>
@@ -21,25 +22,17 @@
 </head>
 
 <body>
-    <header class="header display-flex  ">
-        <div class="display-flex container justify-between align-items-center">
-            <img src="./src/images/logo.svg" alt="logo KenziePets">
-            <div class="display-flex gap-btn-header">
-                <a class="btn btn-line button-register">Register</a>
-                <a class="btn btn-primary">Login</a>
-            </div>
-        </div>
+    <header class="container display-flex justify-between align-items-center">
+        <img class="logotipo" src="./src/images/logo.svg" alt="logotipo KenziePets">
+        <nav class="display-flex">
+            <a class="btn btn-line button-register">Registro</a>
+            <a class="btn btn-primary">Login</a>
+        </nav>
     </header>
+    
     <main class="container-cards">
         <ul id="cardsHome" class="margin-top-cards display-flex gap-card justify-between wrap">
-            <!-- <li class="card">
-                <img class="card-image" src="./src/images/herbert-goetsch-Wpixq0Z1dfo-unsplash.png" alt="">
-                <div class="card-text display-flex flex-direction-column">
-                    <span class="font-brand">Bidu</span>
-                    <span class="font-gray">Cachorro</span>
-                </div>
-            </li> -->
-
+            <!-- RENDERIZADO PELO JS -->
         </ul>
 
     </main>

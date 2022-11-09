@@ -19,7 +19,6 @@ const attUser = () => {
 
     const button = document.querySelector(".att-profile")
     
-
     button.addEventListener("click", async function () {
         createModalUpdateProfile()
         const modal = document.querySelector(".modal-container")
@@ -37,6 +36,39 @@ const attUser = () => {
             })
             await updateProfile(token, body)
             await dinamicPage()
+            modal.remove()
+        })
+    })
+}
+
+const modalRegisterPet = (button) => {
+
+    button.addEventListener('click', (event) => {
+        event.preventDefault()
+        createModalRegisterPet()
+        const modal = document.querySelector('.modal-container')
+        const form = document.querySelector('form')
+        const select = document.querySelector('select')
+
+        const [...formElements] = form
+
+        const body = {}
+
+        select.addEventListener('change', (event) => {
+            body['species'] = event.target.value
+        })
+
+        form.addEventListener('submit', async (iten) => {
+            iten.preventDefault()
+
+            formElements.forEach(element => {
+
+                if (element.tagName === "INPUT" && element.value !== "") {
+                    body[element.id] = element.value
+                }
+            })
+
+            await createPet(token, body)
             modal.remove()
         })
     })
@@ -143,53 +175,16 @@ const dinamicPage = async () => {
 `)
 
 const registerNewPet = document.querySelector('.register-pet')
-    modalRegisterPet(registerNewPet)
+    
     insertPets()
     attUser()
-
+    modalRegisterPet(registerNewPet)
 }
+
 
 await dinamicPage()
 
 const btnDeleteModal = document.querySelector('.delete-profile')
 btnDeleteModal.addEventListener('click', ()=>{
-    
-    modalDeleteProfile()
+        modalDeleteProfile()
 })
-
-
-const modalRegisterPet = (button) => {
-
-
-    button.addEventListener('click', (event) => {
-        event.preventDefault()
-        createModalRegisterPet()
-        const modal = document.querySelector('.modal-container')
-        const form = document.querySelector('form')
-        const select = document.querySelector('select')
-
-        const [...formElements] = form
-
-        const body = {"bread": "SRD"}
-
-        select.addEventListener('change', (event) => {
-            body['species'] = event.target.value
-        })
-
-        form.addEventListener('submit', async (iten) => {
-            iten.preventDefault()
-
-            formElements.forEach(element => {
-
-                if (element.tagName === "INPUT" && element.value !== "") {
-                    body[element.id] = element.value
-                }
-            })
-
-            console.log(body)
-            await createPet(token, body)
-            modal.remove()
-        })
-    })
-}
-

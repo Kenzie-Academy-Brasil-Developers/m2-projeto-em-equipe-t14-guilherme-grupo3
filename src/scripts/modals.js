@@ -96,11 +96,14 @@ export const createModalLogin = () => {
         </form>
       `
     )
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5414e2409dd8be9a4cd9de1ffe377b3187aa07da
 }
 
-// ---------------------- MODAL DELETE PROFILE ----------------
 
+// ---------------------- MODAL DELETE PROFILE ----------------
 export const modalDeleteProfile = () =>{
     const modalContainer = createModalContainer()
     
@@ -138,8 +141,9 @@ export const createModalRegisterPet = () => {
         `<h2 class='font-brand'>Cadastrar pet</h2>
         <form>
             <input type="text" id="name" placeholder="Nome" required>
+            <input type="text" id="bread" placeholder="Raça" required>
             <select required>
-            <option selected disabled>Selecione a raça do pet</option>
+            <option selected disabled>Selecione a espécie do pet</option>
             <option value="Cachorro">Cachorro</option>
             <option value="Gato">Gato</option>
             <option value="Aves">Aves</option>
