@@ -1,7 +1,8 @@
 import { createModalUpdateProfile } from "./modals.js";
 import { getPetsUser, getUserProfile, updateProfile } from "./requests.js"
+import { getLocalStorage } from "./localStorage.js"
 
-const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2Njc5MjIwNzcsImV4cCI6MTY2ODUyNjg3Nywic3ViIjoiN2EyNDRjNmQtZGQyOS00YzI2LThkOGYtZGEzZGI1NDUzY2U4In0.XBdE5HR2bicnsKPDl-4DqaCAyCpNLvdHjs_lqxnhy0E"
+const token = getLocalStorage()
 
 const attUser = () => {
 
