@@ -1,0 +1,36 @@
+.toast-success {
+    position: fixed;
+    left: 80%;
+    bottom: 0;
+    width: 20%;
+    height: 10vh;
+    background-color: green;
+    border-radius: 8px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: toastIt 4000ms ease-in forwards;
+}
+
+.toast-fail{
+    position: fixed;
+    left: 80%;
+    bottom: 0;
+    width: 20%;
+    height: 10vh;
+    background-color: red;
+    border-radius: 8px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: toastIt 4000ms ease-in forwards;
+}
+
+@keyframes toastIt {
+    0%   {bottom:-100px}
+    25%  {bottom:10px}
+    50%  {bottom:10px}
+    100% {bottom:-100px}
+}
