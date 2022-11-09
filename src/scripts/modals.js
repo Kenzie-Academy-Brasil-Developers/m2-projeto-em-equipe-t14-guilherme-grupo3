@@ -104,3 +104,24 @@ export const createModalLogin = () => {
         createModalRegister()
     })
 }
+
+
+/* --------------- CRIA MODAL DE REGISTRO PET -------------- */
+export const createModalRegisterPet = () => {
+    const modalContainer = createModalContainer()
+    const button = document.querySelector("#close-modal")
+    const img = button.firstChild
+    img.src = "/src/images/close.svg"
+
+
+    modalContainer.insertAdjacentHTML('beforeend',
+        `<h2 class='font-brand'>Cadastrar pet</h2>
+        <form>
+            <input type="text" id="name" placeholder="Nome" required>
+            <input type="text" id="species" placeholder="Raça" required>
+            <input type="text" id="avatar_url" placeholder="Avatar" required>
+            <button type="submit" class='btn btn-primary'>Cadastrar</button>
+        </form>
+      `
+    )
+}
