@@ -29,7 +29,7 @@ const sendRequest = (options) => {
 
 
 /* ------------------ EFETUAR LOGIN -------------------*/
-export const login = async(body) => {
+export const login = async (body) => {
     const options = {
         method: 'POST',
         url: `${urlBase}/session/login`,
@@ -40,24 +40,24 @@ export const login = async(body) => {
 
     const response = await sendRequest(options)
     console.log(response)
-    
+
     if (response == 'Email not found' || response == 'please inform a valid email format') {
         toast("fail", "Email não encontrado!")
     } else if (response == 'Please verify the informed password and try again') {
-        toast("fail","Senha inválida!")
+        toast("fail", "Senha inválida!")
     } else {
         setLocalStorage(response.token)
-        toast("success","Logado com sucesso!")
+        toast("success", "Logado com sucesso!")
         setTimeout(() => {
             window.location.replace('./src/pages/logged.html')
-        }, 3000); 
+        }, 3000);
     }
     // return sendRequest(options)
 }
 
 
 /* ------------------ CRIAR USUÁRIO -------------------*/
-export const createUser = (body) => {
+export const createUser = async (body) => {
     const options = {
         method: 'POST',
         url: `${urlBase}/users`,
@@ -71,7 +71,22 @@ export const createUser = (body) => {
         } */
     };
 
-    return sendRequest(options)
+    const response = await sendRequest(options)
+    console.log(response)
+
+    if (response == 'Email not found' || response == 'please inform a valid email format') {
+        toast("fail", "Email não encontrado!")
+    } else if (response == 'please inform a valid image link') {
+        toast("fail", "Link do Avatar inválido!")
+    } else {
+        /* setLocalStorage(response.token)
+        toast("success", "Logado com sucesso!")
+        setTimeout(() => {
+            const container = document.querySelector('.modal-container')
+            container.remove()
+            createModalLogin()
+        }, 3000); */
+    }
 }
 
 
