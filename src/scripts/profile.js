@@ -167,7 +167,7 @@ const modalRegisterPet = (button) => {
 
         const [...formElements] = form
 
-        const body = {"bread": "SRD"}
+        const body = {}
 
         select.addEventListener('change', (event) => {
             body['species'] = event.target.value
@@ -183,7 +183,6 @@ const modalRegisterPet = (button) => {
                 }
             })
 
-            console.log(body)
             await createPet(token, body)
             modal.remove()
         })

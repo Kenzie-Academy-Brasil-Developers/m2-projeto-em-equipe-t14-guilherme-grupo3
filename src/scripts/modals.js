@@ -144,8 +144,9 @@ export const createModalRegisterPet = () => {
         `<h2 class='font-brand'>Cadastrar pet</h2>
         <form>
             <input type="text" id="name" placeholder="Nome" required>
+            <input type="text" id="bread" placeholder="Raça" required>
             <select required>
-            <option selected disabled>Selecione a raça do pet</option>
+            <option selected disabled>Selecione a espécie do pet</option>
             <option value="Cachorro">Cachorro</option>
             <option value="Gato">Gato</option>
             <option value="Aves">Aves</option>
