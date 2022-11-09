@@ -42,7 +42,7 @@ form{
     gap: 12px;
 }
 
-input{
+input, select{
     width: 240px;
     height: 27px;
     border-radius: 16px;
