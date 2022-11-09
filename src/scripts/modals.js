@@ -1,5 +1,5 @@
 import { deleteProfile } from "./requests.js"
-import { getLocalStorage } from "./localStorage.js"
+import { getLocalStorage, removeStorage } from "./localStorage.js"
 
 /* --------------- CRIA CONTAINER PADRÃO PARA OS MODAIS -------------- */
 export const createModalContainer = () => {
@@ -130,6 +130,7 @@ export const modalDeleteProfile = () =>{
     btnDelete.innerText = 'Quero deletar minha conta'
     btnDelete.addEventListener('click', async()=>{
         await deleteProfile(token)
+        removeStorage()
         window.location.replace('/index.html')
     })
 
