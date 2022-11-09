@@ -96,10 +96,6 @@ export const createModalLogin = () => {
         </form>
       `
     )
-<<<<<<< HEAD
-
-=======
->>>>>>> 5414e2409dd8be9a4cd9de1ffe377b3187aa07da
 }
 
 
