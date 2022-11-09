@@ -32,7 +32,7 @@
 }
 
 .profile-buttons-div button{
-    width: 100%;
+    width: 50%;
 }
 /* button.delete-profile{
     width: 100%;
@@ -110,6 +110,9 @@ footer {
     }
 
     li{
+        width: 100%;
+    }
+    .profile-buttons-div button{
         width: 100%;
     }
 
