@@ -112,12 +112,18 @@ export const createModalRegisterPet = () => {
     const img = button.firstChild
     img.src = "/src/images/close.svg"
 
-
     modalContainer.insertAdjacentHTML('beforeend',
         `<h2 class='font-brand'>Cadastrar pet</h2>
         <form>
             <input type="text" id="name" placeholder="Nome" required>
-            <input type="text" id="species" placeholder="Raça" required>
+            <select required>
+            <option selected disabled>Selecione a raça do pet</option>
+            <option value="Cachorro">Cachorro</option>
+            <option value="Gato">Gato</option>
+            <option value="Aves">Aves</option>
+            <option value="Repteis">Repteis</option>
+            <option value="Outros">Outros</option>
+            </select>
             <input type="text" id="avatar_url" placeholder="Avatar" required>
             <button type="submit" class='btn btn-primary'>Cadastrar</button>
         </form>
