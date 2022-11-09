@@ -119,8 +119,8 @@ export const modalDeleteProfile = () =>{
     const btnDelete = document.createElement('button')
     btnDelete.classList =  'btn btn-line-red'
     btnDelete.innerText = 'Quero deletar minha conta'
-    btnDelete.addEventListener('click', ()=>{
-        deleteProfile(token)
+    btnDelete.addEventListener('click', async()=>{
+        await deleteProfile(token)
         window.location.replace('/index.html')
     })
 
