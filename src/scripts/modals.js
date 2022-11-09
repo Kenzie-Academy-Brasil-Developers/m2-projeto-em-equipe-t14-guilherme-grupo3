@@ -204,8 +204,8 @@ export const createModalAdopt = () => {
     modalContainer.insertAdjacentHTML('beforeend',
         `<h2 class='font-brand'>Adotar pet</h2>
         <form>
-            <h2>Tem certeza que deseja adotar o pet ?</h2>
-            <h3>A responsabilidade do cuidado pet é inteiramente do guardião, após aceitar.</h3>
+            <h3>Tem certeza que deseja adotar o pet ?</h3>
+            <h4>A responsabilidade do cuidado com o pet passa a ser do guardião, após aceitar.</h4>
             <button type="submit" class='btn btn-primary'>Adotar</button>
         </form>
       `

@@ -33,8 +33,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 70px ;
+    padding: 40px ;
     gap: 22px;
+    /* background-color: red; */
+    text-align: center;
 }
 
 form{
