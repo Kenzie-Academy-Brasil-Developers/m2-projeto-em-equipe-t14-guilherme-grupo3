@@ -7,10 +7,11 @@ const token = getLocalStorage()
 const attUser = () => {
 
     const button = document.querySelector(".att-profile")
+    
 
     button.addEventListener("click", async function () {
         createModalUpdateProfile()
-
+        const modal = document.querySelector(".modal-container")
         const form = document.querySelector("form")
         const elements = [...form.elements]
 
@@ -24,6 +25,8 @@ const attUser = () => {
                 }
             })
             await updateProfile(token, body)
+            await dinamicPage()
+            modal.remove()
         })
     })
 }
@@ -96,9 +99,18 @@ const insertPets = async () => {
 const dinamicPage = async () => {
     const user = await getUserProfile(token)
     const main = document.querySelector("main")
+    main.innerHTML = ''
+
+    let baseImg = document.createElement('p')
+    baseImg.innerText = 'https://imagemLegal.com'
+
+    if (user.avatar_url === baseImg.innerText) {
+        user.avatar_url = '/src/images/avatar_default.jpg'
+    }
+
 
     main.insertAdjacentHTML("afterbegin", ` <section class="display-flex background-purple justify-center">
-    <img class="profile-image" src="${user.avatar_url}">
+    <img class="profile-image" src="${user.avatar_url}"> 
 </section>
 <section class="width-100 display-flex flex-direction-column align-items-center">
     <div class="profile-information display-flex flex-direction-column justify-between">
