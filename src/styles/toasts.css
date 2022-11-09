@@ -1,26 +1,46 @@
 .toast-success,
 .toast-fail {
     position: fixed;
-    left: 80%;
-    bottom: 0;
-    width: 20%;
-    height: 100px;
+    padding: 20px;
+    right: 10px;
+    bottom: 10px;
+    width: auto;
+    height: 50px;
     background-color: green;
     border-radius: 8px;
     color: white;
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 10;
     animation: toastIt 3000ms ease-in forwards;
 }
 
-.toast-fail{
-    background-color: red;
+.toast-fail {
+    background-color: rgb(165, 0, 0);
+}
+
+@media (max-width: 400px) {
+    .toast-success,
+    .toast-fail {
+        right: unset;
+    }
 }
 
 @keyframes toastIt {
-    0%   {bottom:-100px}
-    25%  {bottom:10px}
-    50%  {bottom:10px}
-    100% {bottom:-100px}
+    0% {
+        top: -100px
+    }
+
+    25% {
+        top: 10px
+    }
+
+    50% {
+        top: 10px
+    }
+
+    100% {
+        top: -100px
+    }
 }
