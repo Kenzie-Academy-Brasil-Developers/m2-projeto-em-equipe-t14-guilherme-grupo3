@@ -1,5 +1,5 @@
-import { createModalUpdateProfile } from "./modals.js";
-import { getPetsUser, getUserProfile, updateProfile } from "./requests.js"
+import { createModalUpdateProfile, createModalRegisterPet } from "./modals.js";
+import { getPetsUser, getUserProfile, updateProfile, createPet } from "./requests.js"
 import { getLocalStorage, removeStorage } from "./localStorage.js"
 
 export const logoutProfile = () => {
@@ -142,11 +142,41 @@ const dinamicPage = async () => {
     </ul>
 `)
 
+const registerNewPet = document.querySelector('.register-pet')
+    modalRegisterPet(registerNewPet)
     insertPets()
     attUser()
 
 }
 
-
-
 dinamicPage()
+
+const modalRegisterPet = (button) => {
+
+
+    button.addEventListener('click', (event) => {
+        event.preventDefault()
+        createModalRegisterPet()
+        const modal = document.querySelector('.modal-container')
+        const form = document.querySelector('form')
+        const [...formElements] = form
+
+        form.addEventListener('submit', async (iten) => {
+            iten.preventDefault()
+
+            const body = {"bread": "SRD"}
+
+            formElements.forEach(element => {
+
+                if (element.tagName === "INPUT" && element.value !== "") {
+                    body[element.id] = element.value
+                }
+            })
+
+            console.log(body)
+            await createPet(token, body)
+            modal.remove()
+        })
+    })
+}
+
