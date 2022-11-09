@@ -74,11 +74,16 @@ const modalRegisterPet = (button) => {
             toast("success", "Criado com sucesso, atualizando...")
             modal.remove()
             setTimeout(() => {
-                const ul = document.querySelector("ul")
-                const array = [... ul]
-                array.forEach(element => 
+                const adopted = document.querySelector(".adopted-pets").childNodes
+                const created = document.querySelector(".created-pets").childNodes
+                const arrayAdopted = [... adopted]
+                const arrayCreated = [... created]
+                arrayAdopted.forEach(element => 
                     element.remove()
                 );
+                arrayCreated.forEach(element => 
+                   element.remove()
+               );
                 insertPets()
                 insertAdoptedPets()
             }, 4000);
@@ -89,11 +94,13 @@ const modalRegisterPet = (button) => {
 
 const insertPets = async () => {
     const array = await getPetsUser(token)
-
+    const adoptedPets = array.filter(element => element.available_for_adoption == false )
     const pets = array.filter(element => element.available_for_adoption == true )
+
     pets.forEach(element => {
         const ul = document.querySelector(".created-pets")
         const textList = document.querySelector(".text-list")
+        const textAdopt = document.querySelector(".text-adopt")
         const li = document.createElement("li")
         const img = document.createElement("img")
         const div = document.createElement("div")
@@ -112,14 +119,16 @@ const insertPets = async () => {
         const button = document.createElement("button")
         const buttonRegisterPet = document.querySelector(".register-pet")
 
-        if (pets.length > 1) {
+        if (pets.length > 1 || adoptedPets.length > 1) {
 
             buttonRegisterPet.classList = "register-pet register-pet-margin btn btn-green"
             ul.classList = "display-flex wrap created-pets ul-place-center"
             textList.classList = "text-list register-pet-margin"
+            textAdopt.classList = "text-adopt register-pet-margin"
         } else {
             buttonRegisterPet.classList = "register-pet btn btn-green"
             textList.classList = "text-list"
+            textAdopt.classList = "text-adopt"
         }
 
         li.classList = "display-flex"
@@ -145,7 +154,7 @@ const insertPets = async () => {
         if (element.available_for_adoption == true) {
             spanAdoptReal.innerText = "Sim"
         } else {
-            spanAdoptReal.innerText = "Sim"
+            spanAdoptReal.innerText = "Não"
         }
 
         button.classList = "btn btn-primary att-pet"
@@ -164,17 +173,19 @@ const insertPets = async () => {
         ul.appendChild(li)
     });
     attPet()
+    deleteModal()
 }
 
 const insertAdoptedPets = async () => {
     const pets = await getPetsUser(token)
-
+    const createdPets = pets.filter(element => element.available_for_adoption == true )
     const adoptedPets = pets.filter(element => element.available_for_adoption == false )
-    console.log(adoptedPets)
+    const buttonRegister = document.querySelector(".register-pet")
 
     adoptedPets.forEach(element => {
         const ul = document.querySelector(".adopted-pets")
         const textList = document.querySelector(".text-adopt")
+        const textCreated = document.querySelector(".text-list")
         const li = document.createElement("li")
         const img = document.createElement("img")
         const div = document.createElement("div")
@@ -188,14 +199,15 @@ const insertAdoptedPets = async () => {
         const spanBread = document.createElement("span")
         const spanBreadReal = document.createElement("span")
 
-        if (adoptedPets.length > 1) {
-
-           
+        if (adoptedPets.length > 1 || createdPets.length > 1) {
+            buttonRegister.classList = "register-pet register-pet-margin btn btn-green"
             ul.classList = "display-flex wrap adopted-pets ul-place-center"
-            textList.classList = "text-list register-pet-margin"
+            textList.classList = "text-adopt register-pet-margin"
+            textCreated.classList = "text-list register-pet-margin"
+            
         } else {
-   
-            textList.classList = "text-list"
+            buttonRegister.classList = "register-pet btn btn-green"
+            textList.classList = "text-adopt"
         }
 
         li.classList = "display-flex"
@@ -226,7 +238,6 @@ const insertAdoptedPets = async () => {
 
         ul.appendChild(li)
     });
-    attPet()
 }
 
 const dinamicPage = async () => {
@@ -260,10 +271,10 @@ const dinamicPage = async () => {
     <div>
         <button class="register-pet btn btn-green" type="button">Cadastrar novo pet</button>
     </div>
-    <h2 class="text-list register-pet-margin">Pets Cadastrados</h2>
+    <h2 class="text-list">Pets Cadastrados</h2>
     <ul class="display-flex wrap created-pets">
     </ul>
-    <h2 class="text-adopt register-pet-margin">Pets Adotados</h2>
+    <h2 class="text-adopt">Pets Adotados</h2>
     <ul class="display-flex wrap adopted-pets">
     </ul>
 `)
@@ -280,10 +291,14 @@ const registerNewPet = document.querySelector('.register-pet')
 
 await dinamicPage()
 
-const btnDeleteModal = document.querySelector('.delete-profile')
-btnDeleteModal.addEventListener('click', ()=>{
-        modalDeleteProfile()
-})
+function deleteModal() {
+    const btnDeleteModal = document.querySelector('.delete-profile')
+    btnDeleteModal.addEventListener('click', ()=>{
+            modalDeleteProfile()
+    })
+}
+
+
 
 const attPet = () => {
     const button = document.querySelectorAll(".att-pet")
@@ -297,7 +312,7 @@ const attPet = () => {
             const form = document.querySelector("form")
             const elements = [...form.elements]
             const select = document.querySelector('select')
-    
+            console.log(form)
             select.addEventListener('change', (event) => {
                 body['species'] = event.target.value
             })
@@ -317,11 +332,16 @@ const attPet = () => {
                  const modal = document.querySelector(".modal-container")
                  modal.remove()
                  setTimeout(() => {
-                     const ul = document.querySelector("ul").childNodes
-                     const array = [... ul]
-                     array.forEach(element => 
+                     const adopted = document.querySelector(".adopted-pets").childNodes
+                     const created = document.querySelector(".created-pets").childNodes
+                     const arrayAdopted = [... adopted]
+                     const arrayCreated = [... created]
+                     arrayAdopted.forEach(element => 
                          element.remove()
                      );
+                     arrayCreated.forEach(element => 
+                        element.remove()
+                    );
                      insertPets()
                      insertAdoptedPets()
                  }, 4000);
