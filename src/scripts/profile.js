@@ -51,6 +51,7 @@ const modalRegisterPet = (button) => {
         const form = document.querySelector('form')
         const select = document.querySelector('select')
 
+
         const [...formElements] = form
 
         const body = {}
@@ -73,7 +74,12 @@ const modalRegisterPet = (button) => {
             toast("success", "Criado com sucesso, atualizando...")
             modal.remove()
             setTimeout(() => {
-                window.location.reload(true)
+                const ul = document.querySelector("ul").childNodes
+                const array = [... ul]
+                array.forEach(element => 
+                    element.remove()
+                );
+                insertPets()
             }, 4000);
         
         })
