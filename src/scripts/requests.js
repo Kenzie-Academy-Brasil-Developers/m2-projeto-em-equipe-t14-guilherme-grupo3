@@ -99,7 +99,6 @@ export const updateProfile = (token, body) => {
         data: body
         /* { avatar_url: 'https://umaImagemLegal.com', name: 'Bertoldo' } */
     };
-
     return sendRequest(options)
 }
 

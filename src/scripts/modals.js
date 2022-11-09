@@ -16,7 +16,7 @@ export const createModalContainer = () => {
     divModal.className = 'modal'
     divHeader.className = 'header-modal'
     button.id = 'close-modal'
-    img.src = './src/images/close.svg'
+    img.src = '../images/close.svg'
     divContent.className = 'content-modal'
     divFooter.classList = 'footer-modal'
 
@@ -40,9 +40,8 @@ export const createModalUpdateProfile = () => {
     modalContainer.insertAdjacentHTML('beforeend',
         `<h2 class='font-brand'>Atualizar perfil</h2>
         <form>
-            <input type="text" placeholder="Nome">
-            <input type="text" placeholder="Email">
-            <input type="text" placeholder="Avatar">
+            <input type="text" id="name" placeholder="Nome">
+            <input type="text" id="avatar_url" placeholder="Avatar">
             <button class='btn btn-primary'>Atualizar</button>
         </form>
         `
@@ -53,6 +52,9 @@ export const createModalUpdateProfile = () => {
 /* --------------- CRIA MODAL DE REGISTRO -------------- */
 export const createModalRegister = () => {
     const modalContainer = createModalContainer()
+    const button = document.querySelector("#close-modal")
+    const img = button.firstChild
+    img.src = "./src/images/close.svg"
 
     modalContainer.insertAdjacentHTML('beforeend',
         `<h2 class='font-brand'>Cadastrar</h2>
@@ -66,12 +68,23 @@ export const createModalRegister = () => {
         </form>
       `
     )
+
+    const redirect = document.querySelector('.redirect-login')
+    const container = document.querySelector('.modal-container')
+
+    redirect.addEventListener('click', () => {
+        container.remove()
+    })
 }
 
 
 /* --------------- CRIA MODAL DE LOGIN -------------- */
 export const createModalLogin = () => {
     const modalContainer = createModalContainer()
+    const button = document.querySelector("#close-modal")
+    const img = button.firstChild
+    img.src = "./src/images/close.svg"
+
 
     modalContainer.insertAdjacentHTML('beforeend',
         `<h2 class='font-brand'>Login</h2>
@@ -111,5 +124,31 @@ export const modalDeleteProfile = () =>{
 
     modalContainer.append(h2, btnNoDelete, btnDelete)
     
+}
 
+
+/* --------------- CRIA MODAL DE REGISTRO PET -------------- */
+export const createModalRegisterPet = () => {
+    const modalContainer = createModalContainer()
+    const button = document.querySelector("#close-modal")
+    const img = button.firstChild
+    img.src = "/src/images/close.svg"
+
+    modalContainer.insertAdjacentHTML('beforeend',
+        `<h2 class='font-brand'>Cadastrar pet</h2>
+        <form>
+            <input type="text" id="name" placeholder="Nome" required>
+            <select required>
+            <option selected disabled>Selecione a raça do pet</option>
+            <option value="Cachorro">Cachorro</option>
+            <option value="Gato">Gato</option>
+            <option value="Aves">Aves</option>
+            <option value="Repteis">Repteis</option>
+            <option value="Outros">Outros</option>
+            </select>
+            <input type="text" id="avatar_url" placeholder="Avatar" required>
+            <button type="submit" class='btn btn-primary'>Cadastrar</button>
+        </form>
+      `
+    )
 }

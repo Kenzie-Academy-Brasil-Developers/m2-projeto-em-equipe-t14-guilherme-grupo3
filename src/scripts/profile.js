@@ -1,8 +1,49 @@
-import { modalDeleteProfile } from "./modals.js";
-import { getPetsUser, getUserProfile } from "./requests.js"
+import { createModalUpdateProfile, createModalRegisterPet,modalDeleteProfile } from "./modals.js";
+import { getPetsUser, getUserProfile, updateProfile, createPet } from "./requests.js"
+import { getLocalStorage, removeStorage } from "./localStorage.js"
+
+export const logoutProfile = () => {
+    const btnLogout = document.querySelector('#btn-logout')
+    btnLogout.onclick = (event) => {
+        event.preventDefault()
+        removeStorage()
+        window.location.replace('../../index.html')
+    }
+}
+
+logoutProfile()
+
+const token = getLocalStorage()
+
+const attUser = () => {
+
+    const button = document.querySelector(".att-profile")
+    
+
+    button.addEventListener("click", async function () {
+        createModalUpdateProfile()
+        const modal = document.querySelector(".modal-container")
+        const form = document.querySelector("form")
+        const elements = [...form.elements]
+
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault()
+            const body = {}
+
+            elements.forEach((element) => {
+                if (element.tagName == "INPUT" && element.value !== "") {
+                    body[element.id] = element.value
+                }
+            })
+            await updateProfile(token, body)
+            await dinamicPage()
+            modal.remove()
+        })
+    })
+}
 
 const insertPets = async () => {
-    const pets = await getPetsUser("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2Njc5MjIwNzcsImV4cCI6MTY2ODUyNjg3Nywic3ViIjoiN2EyNDRjNmQtZGQyOS00YzI2LThkOGYtZGEzZGI1NDUzY2U4In0.XBdE5HR2bicnsKPDl-4DqaCAyCpNLvdHjs_lqxnhy0E")
+    const pets = await getPetsUser(token)
     pets.forEach(element => {
         const ul = document.querySelector("ul")
         const li = document.createElement("li")
@@ -18,22 +59,30 @@ const insertPets = async () => {
         const spanAdopt = document.createElement("span")
         const spanAdoptReal = document.createElement("span")
         const button = document.createElement("button")
+        const buttonRegisterPet = document.querySelector(".register-pet")
+
+        if (pets.length > 1) {
+            buttonRegisterPet.classList = "register-pet register-pet-margin btn btn-green"
+            ul.classList = "display-flex wrap ul-place-center"
+        } else {
+            buttonRegisterPet.classList = "register-pet btn btn-green"
+        }
 
         li.classList = "display-flex"
         img.classList = "card-image"
         img.src = `${element.avatar_url}`
         div.classList = "display-flex info-pet flex-direction-column justify-evenly"
         spanNome.classList = "font-body-brand"
-        spanNome.innerText = 'Nome:'
+        spanNome.innerText = 'Nome: '
         spanNomeReal.classList = "font-body-brand"
         spanNomeReal.innerText = `${element.name}`
         spanEspecie.classList = "font-body-brand"
-        spanEspecie.innerText = 'Espécie:'
+        spanEspecie.innerText = 'Espécie: '
         spanEspecieReal.classList = "font-body-brand"
         spanEspecieReal.innerText = `${element.species}`
 
         spanAdopt.classList = "font-body-brand"
-        spanAdopt.innerText = 'Adotável:'
+        spanAdopt.innerText = 'Adotável: '
         spanAdoptReal.classList = "font-body-brand"
         if (element.available_for_adoption == true) {
             spanAdoptReal.innerText = "Sim"
@@ -59,18 +108,27 @@ const insertPets = async () => {
 }
 
 const dinamicPage = async () => {
-    const user = await getUserProfile("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2Njc5MjIwNzcsImV4cCI6MTY2ODUyNjg3Nywic3ViIjoiN2EyNDRjNmQtZGQyOS00YzI2LThkOGYtZGEzZGI1NDUzY2U4In0.XBdE5HR2bicnsKPDl-4DqaCAyCpNLvdHjs_lqxnhy0E")
+    const user = await getUserProfile(token)
     const main = document.querySelector("main")
+    main.innerHTML = ''
+
+    let baseImg = document.createElement('p')
+    baseImg.innerText = 'https://imagemLegal.com'
+
+    if (user.avatar_url === baseImg.innerText) {
+        user.avatar_url = '/src/images/avatar_default.jpg'
+    }
+
 
     main.insertAdjacentHTML("afterbegin", ` <section class="display-flex background-purple justify-center">
-    <img class="profile-image" src="${user.avatar_url}">
+    <img class="profile-image" src="${user.avatar_url}"> 
 </section>
 <section class="width-100 display-flex flex-direction-column align-items-center">
     <div class="profile-information display-flex flex-direction-column justify-between">
         <h2 class="font-brand text-align-center">Dados pessoais</h2>
         <p><span class="font-body-brand">Nome:</span> <span class="font-body-black">${user.name}</span></p>
         <p><span class="font-body-brand">E-mail:</span> <span class="font-body-black">${user.email}</span></p>
-        <div class="display-flex justify-evenly">
+        <div class="display-flex profile-buttons-div">
             <button class="btn btn-primary att-profile" type="button">Atualizar informações</button>
             <button class="btn btn-line-red delete-profile" type="button">Deletar conta</button>
         </div>
@@ -84,7 +142,11 @@ const dinamicPage = async () => {
     </ul>
 `)
 
-insertPets()
+const registerNewPet = document.querySelector('.register-pet')
+    modalRegisterPet(registerNewPet)
+    insertPets()
+    attUser()
+
 }
 
 await dinamicPage()
@@ -94,3 +156,40 @@ btnDeleteModal.addEventListener('click', ()=>{
     
     modalDeleteProfile()
 })
+
+
+const modalRegisterPet = (button) => {
+
+
+    button.addEventListener('click', (event) => {
+        event.preventDefault()
+        createModalRegisterPet()
+        const modal = document.querySelector('.modal-container')
+        const form = document.querySelector('form')
+        const select = document.querySelector('select')
+
+        const [...formElements] = form
+
+        const body = {"bread": "SRD"}
+
+        select.addEventListener('change', (event) => {
+            body['species'] = event.target.value
+        })
+
+        form.addEventListener('submit', async (iten) => {
+            iten.preventDefault()
+
+            formElements.forEach(element => {
+
+                if (element.tagName === "INPUT" && element.value !== "") {
+                    body[element.id] = element.value
+                }
+            })
+
+            console.log(body)
+            await createPet(token, body)
+            modal.remove()
+        })
+    })
+}
+
