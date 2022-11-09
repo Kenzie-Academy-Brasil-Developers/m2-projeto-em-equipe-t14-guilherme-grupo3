@@ -1,4 +1,5 @@
 import { deleteProfile } from "./requests.js"
+import { getLocalStorage } from "./localStorage.js"
 
 /* --------------- CRIA CONTAINER PADRÃO PARA OS MODAIS -------------- */
 export const createModalContainer = () => {
@@ -111,6 +112,7 @@ export const createModalLogin = () => {
 // ---------------------- MODAL DELETE PROFILE ----------------
 export const modalDeleteProfile = () =>{
     const modalContainer = createModalContainer()
+    const token = getLocalStorage()
     
     const h2 = document.createElement('h2')
     h2.classList = 'font-brand'
@@ -128,13 +130,11 @@ export const modalDeleteProfile = () =>{
     btnDelete.innerText = 'Quero deletar minha conta'
     btnDelete.addEventListener('click', ()=>{
         deleteProfile(token)
+        window.location.replace('/index.html')
     })
 
     modalContainer.append(h2, btnNoDelete, btnDelete)
-
-    const redirect = document.querySelector('.redirect-register')
-    const container = document.querySelector('.modal-container')
-
+    
 }
 
 

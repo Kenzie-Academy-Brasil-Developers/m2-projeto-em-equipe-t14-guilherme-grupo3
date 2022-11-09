@@ -1,4 +1,4 @@
-import { modalDeleteProfile, createModalUpdateProfile, createModalRegisterPet } from "./modals.js";
+import { createModalUpdateProfile, createModalRegisterPet,modalDeleteProfile } from "./modals.js";
 import { getPetsUser, getUserProfile, updateProfile, createPet } from "./requests.js"
 import { getLocalStorage, removeStorage } from "./localStorage.js"
 
@@ -196,4 +196,3 @@ const btnDeleteModal = document.querySelector('.delete-profile')
 btnDeleteModal.addEventListener('click', ()=>{
         modalDeleteProfile()
 })
-
