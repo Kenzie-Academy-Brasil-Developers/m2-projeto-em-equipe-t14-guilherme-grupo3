@@ -124,7 +124,7 @@ export const getUserProfile = (token) => {
 
 
 /* ------------------  ATUALIZAR PERFIL USUÁRIO LOGADO -------------------*/
-export const updateProfile = (token, body) => {
+export const updateProfile = async (token, body) => {
     const options = {
         method: 'PATCH',
         url: 'https://m2-api-adot-pet.herokuapp.com/users/profile',
@@ -135,7 +135,20 @@ export const updateProfile = (token, body) => {
         data: body
         /* { avatar_url: 'https://umaImagemLegal.com', name: 'Bertoldo' } */
     };
-    return sendRequest(options)
+
+    const response = await sendRequest(options)
+    console.log(response)
+
+    if (response == 'please inform a valid image link') {
+        setTimeout(() => {
+            toast("fail", "Link do Avatar inválido!")
+        }, 1000);
+    } else {
+        setTimeout(() => {
+            toast("success", "Atualizado com sucesso!")
+
+        }, 1000);
+    }
 }
 
 

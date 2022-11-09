@@ -126,6 +126,7 @@ export const modalDeleteProfile = () =>{
     })
 
     const btnDelete = document.createElement('button')
+    console.log('delete')
     btnDelete.classList =  'btn btn-line-red'
     btnDelete.innerText = 'Quero deletar minha conta'
     btnDelete.addEventListener('click', async()=>{
