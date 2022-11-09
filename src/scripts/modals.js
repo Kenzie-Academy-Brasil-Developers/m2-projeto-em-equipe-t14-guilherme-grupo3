@@ -88,4 +88,11 @@ export const createModalLogin = () => {
       `
     )
 
+    const redirect = document.querySelector('.redirect-register')
+    const container = document.querySelector('.modal-container')
+
+    redirect.addEventListener('click', () => {
+        container.remove()
+        createModalRegister()
+    })
 }
