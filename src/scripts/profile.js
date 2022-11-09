@@ -41,6 +41,39 @@ const attUser = () => {
     })
 }
 
+const modalRegisterPet = (button) => {
+
+    button.addEventListener('click', (event) => {
+        event.preventDefault()
+        createModalRegisterPet()
+        const modal = document.querySelector('.modal-container')
+        const form = document.querySelector('form')
+        const select = document.querySelector('select')
+
+        const [...formElements] = form
+
+        const body = {}
+
+        select.addEventListener('change', (event) => {
+            body['species'] = event.target.value
+        })
+
+        form.addEventListener('submit', async (iten) => {
+            iten.preventDefault()
+
+            formElements.forEach(element => {
+
+                if (element.tagName === "INPUT" && element.value !== "") {
+                    body[element.id] = element.value
+                }
+            })
+
+            await createPet(token, body)
+            modal.remove()
+        })
+    })
+}
+
 const insertPets = async () => {
     const pets = await getPetsUser(token)
     pets.forEach(element => {
@@ -142,10 +175,10 @@ const dinamicPage = async () => {
 `)
 
 const registerNewPet = document.querySelector('.register-pet')
-    modalRegisterPet(registerNewPet)
+    
     insertPets()
     attUser()
-
+    modalRegisterPet(registerNewPet)
 }
 
 
@@ -156,35 +189,3 @@ btnDeleteModal.addEventListener('click', ()=>{
         modalDeleteProfile()
 })
 
-const modalRegisterPet = (button) => {
-
-    button.addEventListener('click', (event) => {
-        event.preventDefault()
-        createModalRegisterPet()
-        const modal = document.querySelector('.modal-container')
-        const form = document.querySelector('form')
-        const select = document.querySelector('select')
-
-        const [...formElements] = form
-
-        const body = {}
-
-        select.addEventListener('change', (event) => {
-            body['species'] = event.target.value
-        })
-
-        form.addEventListener('submit', async (iten) => {
-            iten.preventDefault()
-
-            formElements.forEach(element => {
-
-                if (element.tagName === "INPUT" && element.value !== "") {
-                    body[element.id] = element.value
-                }
-            })
-
-            await createPet(token, body)
-            modal.remove()
-        })
-    })
-}
