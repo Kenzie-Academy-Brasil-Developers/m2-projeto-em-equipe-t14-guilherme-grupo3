@@ -23,11 +23,11 @@ export const registerUser = () => {
             })
             await createUser(body)
 
-            toast("success", "Redirecionando para o login")
-            setTimeout(() => {
+            // toast("success", "Redirecionando para o login")
+            /* setTimeout(() => {
                 container.remove()
                 createModalLogin()
-            }, 4000);
+            }, 4000); */
 
         })
 
