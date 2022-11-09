@@ -7,7 +7,7 @@ header {
 }
 
 nav {
-    gap: 23.5px;
+    gap: 11px;
 }
 
 .logotipo {
@@ -93,4 +93,12 @@ footer {
     gap: 6px;
     justify-content: space-around;
     flex-wrap: wrap;
+}
+
+@media(max-width: 400px) {
+    nav {
+        flex-wrap: wrap;
+        gap: 5px;
+        justify-content: center;
+    }
 }
