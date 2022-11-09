@@ -159,12 +159,18 @@ const modalRegisterPet = (button) => {
         createModalRegisterPet()
         const modal = document.querySelector('.modal-container')
         const form = document.querySelector('form')
+        const select = document.querySelector('select')
+
         const [...formElements] = form
+
+        const body = {"bread": "SRD"}
+
+        select.addEventListener('change', (event) => {
+            body['species'] = event.target.value
+        })
 
         form.addEventListener('submit', async (iten) => {
             iten.preventDefault()
-
-            const body = {"bread": "SRD"}
 
             formElements.forEach(element => {
 
