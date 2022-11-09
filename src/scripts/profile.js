@@ -1,6 +1,17 @@
 import { createModalUpdateProfile } from "./modals.js";
 import { getPetsUser, getUserProfile, updateProfile } from "./requests.js"
-import { getLocalStorage } from "./localStorage.js"
+import { getLocalStorage, removeStorage } from "./localStorage.js"
+
+export const logoutProfile = () => {
+    const btnLogout = document.querySelector('#btn-logout')
+    btnLogout.onclick = (event) => {
+        event.preventDefault()
+        removeStorage()
+        window.location.replace('../../index.html')
+    }
+}
+
+logoutProfile()
 
 const token = getLocalStorage()
 
