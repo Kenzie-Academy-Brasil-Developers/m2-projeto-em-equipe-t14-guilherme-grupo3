@@ -1,4 +1,4 @@
-import { createModalRegister} from "./modals.js";
+import { createModalRegister, createModalLogin} from "./modals.js";
 import { createUser } from "./requests.js";
 
 const redirectLogin = () => {
@@ -6,7 +6,7 @@ const redirectLogin = () => {
     const button = document.querySelector(".redirect-login")
     button.addEventListener("click", function() {
         modal.remove()
-        // createModalLogin()
+        createModalLogin()
     })
 }
 

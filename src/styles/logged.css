@@ -35,7 +35,7 @@ section {
 
 ul {
     list-style: none;
-    width: 728px;
+    /* width: 728px; */
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -54,8 +54,11 @@ li {
 }
 
 li > div{
-    padding-left: 16px;
+    padding: 0 16px;
     /* width: 100%; */
+    /* background-color: red; */
+    width: 100%;
+    word-wrap: break-word;
 }
 
 li > img{
@@ -78,3 +81,23 @@ footer{
     background-color: var(--grey-5);
 }
 
+@media (max-width: 600px)
+{
+  body{
+    /* background-color: red; */
+    width: 100vw;
+  }
+
+  header{
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  section{
+    padding-top: 50px;
+  }
+
+  ul{
+    justify-content: center;
+  }
+}

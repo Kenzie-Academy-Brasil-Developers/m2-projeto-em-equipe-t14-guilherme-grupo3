@@ -15,7 +15,7 @@ function renderCardsHome(array){
         spanName.innerText = name
 
         const spanSpecie = document.createElement('span')
-        spanSpecie.classList = "font-brand"
+        spanSpecie.classList = "font-gray"
         spanSpecie.innerText = species
        
         const div = document.createElement('div')
