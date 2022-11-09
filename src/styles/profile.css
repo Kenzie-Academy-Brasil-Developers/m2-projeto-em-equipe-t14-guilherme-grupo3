@@ -123,7 +123,8 @@ footer {
         padding: 20px;
     }
 
-    ul.created-pets{
+    ul.created-pets,
+    ul.adopted-pets{
         flex-wrap: nowrap;
     }
 
