@@ -1,4 +1,4 @@
-import { createModalUpdateProfile, createModalRegisterPet } from "./modals.js";
+import { modalDeleteProfile, createModalUpdateProfile, createModalRegisterPet } from "./modals.js";
 import { getPetsUser, getUserProfile, updateProfile, createPet } from "./requests.js"
 import { getLocalStorage, removeStorage } from "./localStorage.js"
 
@@ -19,7 +19,6 @@ const attUser = () => {
 
     const button = document.querySelector(".att-profile")
     
-
     button.addEventListener("click", async function () {
         createModalUpdateProfile()
         const modal = document.querySelector(".modal-container")
@@ -149,10 +148,15 @@ const registerNewPet = document.querySelector('.register-pet')
 
 }
 
-dinamicPage()
+
+await dinamicPage()
+
+const btnDeleteModal = document.querySelector('.delete-profile')
+btnDeleteModal.addEventListener('click', ()=>{
+        modalDeleteProfile()
+})
 
 const modalRegisterPet = (button) => {
-
 
     button.addEventListener('click', (event) => {
         event.preventDefault()
@@ -185,4 +189,3 @@ const modalRegisterPet = (button) => {
         })
     })
 }
-

@@ -1,3 +1,5 @@
+import { deleteProfile } from "./requests.js"
+
 /* --------------- CRIA CONTAINER PADRÃO PARA OS MODAIS -------------- */
 export const createModalContainer = () => {
     const body = document.querySelector('body')
@@ -94,6 +96,32 @@ export const createModalLogin = () => {
         </form>
       `
     )
+}
+
+
+// ---------------------- MODAL DELETE PROFILE ----------------
+export const modalDeleteProfile = () =>{
+    const modalContainer = createModalContainer()
+    
+    const h2 = document.createElement('h2')
+    h2.classList = 'font-brand'
+    h2.innerText = 'Deseja mesmo deletar a sua conta?'
+
+    const btnNoDelete = document.createElement('button')
+    btnNoDelete.classList =  'btn btn-primary'
+    btnNoDelete.innerText = 'Não desejo deletar minha conta'
+    btnNoDelete.addEventListener('click', ()=>{
+        document.querySelector('.modal-container').remove()
+    })
+
+    const btnDelete = document.createElement('button')
+    btnDelete.classList =  'btn btn-line-red'
+    btnDelete.innerText = 'Quero deletar minha conta'
+    btnDelete.addEventListener('click', ()=>{
+        deleteProfile(token)
+    })
+
+    modalContainer.append(h2, btnNoDelete, btnDelete)
 
     const redirect = document.querySelector('.redirect-register')
     const container = document.querySelector('.modal-container')
