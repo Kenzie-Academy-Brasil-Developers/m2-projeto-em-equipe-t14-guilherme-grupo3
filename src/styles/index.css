@@ -3,11 +3,12 @@
     background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(121,90,9,1) 0%, rgba(0,212,255,1) 100%);
     background-attachment: fixed;
 } */
-.header{
+header{
     height: 5rem;
     width: 100%;
-    border-bottom: 1px solid var(--grey-3);
     background-color: var(--grey-4);
+    border-bottom: 1px solid var(--grey-3);
+    
 }
 
 .gap-btn-header{

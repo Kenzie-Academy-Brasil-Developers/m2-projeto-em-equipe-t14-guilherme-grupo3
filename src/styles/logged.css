@@ -9,7 +9,7 @@
     margin: 0 auto;
 } */
 
-header {
+/* header {
     height: 80px;
     display: flex;
     justify-content: space-between;
@@ -20,11 +20,8 @@ header {
 nav{
     display: flex;
     gap: 26.5px;
-}
+} */
 
-main {
-    /* margin-top: 111px; */
-}
 
 section {
     border-top: 1px solid var(--grey-3);

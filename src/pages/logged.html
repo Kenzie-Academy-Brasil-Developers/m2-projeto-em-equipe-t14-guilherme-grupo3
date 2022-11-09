@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../styles/buttons.css">
     <link rel="stylesheet" href="../styles/fonts.css">
     <link rel="stylesheet" href="../styles/cards.css">
+    <link rel="stylesheet" href="../styles/header.css">
     <link rel="stylesheet" href="../styles/globalStyles.css">
     <script type="module" defer src='../scripts/logged.js'></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -20,13 +21,23 @@
 </head>
 
 <body>
-    <header class="container">
+    <header class="container display-flex justify-between align-items-center">
+        <img class="logotipo" src="../images/logo.svg" alt="logotipo KenziePets">
+        <nav class="display-flex">
+            <a class="btn btn-line" href="../../src/pages/profile.html">Perfil</a>
+            <a class="btn btn-primary" id="btn-logout" href="../../index.html">Logout</a>
+        </nav>
+    </header>
+    
+    <!-- <header class="container">
         <img src="../images/logo.svg" alt="logotipo KenziePets">
         <nav>
             <a class="btn btn-line" href="../../src/pages/profile.html">Perfil</a>
             <a class="btn btn-primary" id="btn-logout" href="../../index.html">Logout</a>
         </nav>
-    </header>
+    </header> -->
+
+
     <main>
         <section class="container-cards">
             <ul>
