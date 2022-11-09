@@ -14,7 +14,6 @@
     box-shadow: 0px 0px 5px rgba(78, 32, 150, 0.25);
     border-radius: 4px;
     background-color: var(--grey-4);
-
 }
 
 .card-image{
@@ -25,6 +24,8 @@
 }
 
 .card-text{
+    /* width: inherit; */
+    /* background-color: red; */
     padding: 16px;
 }
 
