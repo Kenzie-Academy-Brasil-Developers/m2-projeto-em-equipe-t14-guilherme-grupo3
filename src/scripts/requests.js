@@ -1,4 +1,6 @@
 import { setLocalStorage } from "./localStorage.js";
+import { eventLogin } from "./login.js";
+import { createModalLogin } from "./modals.js";
 import { toast } from "./toasts.js";
 
 const urlBase = 'https://m2-api-adot-pet.herokuapp.com'
@@ -74,18 +76,21 @@ export const createUser = async (body) => {
     const response = await sendRequest(options)
     console.log(response)
 
-    if (response == 'Email not found' || response == 'please inform a valid email format') {
-        toast("fail", "Email não encontrado!")
+    if (response == 'please inform a valid email format') {
+        toast("fail", "Email inválido!")
+    } else if (response == 'Email already in use') {
+        toast("fail", "Email já está em uso!")
     } else if (response == 'please inform a valid image link') {
         toast("fail", "Link do Avatar inválido!")
     } else {
-        /* setLocalStorage(response.token)
-        toast("success", "Logado com sucesso!")
+        setLocalStorage(response.token)
+        toast("success", "Cadastrado com sucesso!")
         setTimeout(() => {
             const container = document.querySelector('.modal-container')
             container.remove()
             createModalLogin()
-        }, 3000); */
+            eventLogin()
+        }, 3000);
     }
 }
 

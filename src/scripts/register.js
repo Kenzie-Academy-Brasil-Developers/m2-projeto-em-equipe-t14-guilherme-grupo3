@@ -1,6 +1,5 @@
-import { createModalRegister, createModalLogin} from "./modals.js";
+import { createModalRegister} from "./modals.js";
 import { createUser } from "./requests.js";
-import { toast } from "./toasts.js";
 
 export const registerUser = () => {
     const button = document.querySelector(".button-register")
@@ -12,7 +11,6 @@ export const registerUser = () => {
         const elements = [...form.elements]
     
         form.addEventListener("submit", async (e) => {
-            const container = document.querySelector('.modal-container')
             e.preventDefault()
             const body = {}
     
@@ -22,13 +20,6 @@ export const registerUser = () => {
                 }
             })
             await createUser(body)
-
-            // toast("success", "Redirecionando para o login")
-            /* setTimeout(() => {
-                container.remove()
-                createModalLogin()
-            }, 4000); */
-
         })
 
     })   
