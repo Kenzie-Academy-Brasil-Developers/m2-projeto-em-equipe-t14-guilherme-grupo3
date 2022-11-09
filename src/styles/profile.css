@@ -122,4 +122,9 @@ footer {
     div.info-pet{
         padding: 10px;
     }
+
+    div.content-modal{
+        /* background-color: red; */
+        padding: 33px;
+    }
 }
