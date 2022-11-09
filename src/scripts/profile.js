@@ -1,5 +1,5 @@
-import { createModalUpdateProfile, createModalRegisterPet,modalDeleteProfile } from "./modals.js";
-import { getPetsUser, getUserProfile, updateProfile, createPet } from "./requests.js"
+import { createModalUpdateProfile, createModalRegisterPet,modalDeleteProfile, createModalAttPet } from "./modals.js";
+import { getPetsUser, getUserProfile, updateProfile, createPet, updatePet } from "./requests.js"
 import { getLocalStorage, removeStorage } from "./localStorage.js"
 import { toast } from "./toasts.js";
 
@@ -156,7 +156,7 @@ const insertPets = async () => {
 
         ul.appendChild(li)
     });
-
+    attPet()
 }
 
 const dinamicPage = async () => {
@@ -209,3 +209,49 @@ const btnDeleteModal = document.querySelector('.delete-profile')
 btnDeleteModal.addEventListener('click', ()=>{
         modalDeleteProfile()
 })
+
+const attPet = () => {
+    const button = document.querySelectorAll(".att-pet")
+
+    button.forEach(element => {
+
+        element.addEventListener("click", function() {
+            createModalAttPet()
+            
+            const body = {}
+            const form = document.querySelector("form")
+            const elements = [...form.elements]
+            const select = document.querySelector('select')
+    
+            select.addEventListener('change', (event) => {
+                body['species'] = event.target.value
+            })
+
+            form.addEventListener("submit", async (e) => {
+                e.preventDefault()
+
+        
+                elements.forEach((elemento) => {
+                    if(elemento.tagName == "INPUT" && elemento.value !== "") {
+                        body[elemento.id] = elemento.value
+                    }
+                })
+
+                 await updatePet(token, element.id, body)
+                 
+                 const modal = document.querySelector(".modal-container")
+                 modal.remove()
+                 setTimeout(() => {
+                     const ul = document.querySelector("ul").childNodes
+                     const array = [... ul]
+                     array.forEach(element => 
+                         element.remove()
+                     );
+                     insertPets()
+                 }, 4000);
+
+            })
+        })
+        
+    });
+}
