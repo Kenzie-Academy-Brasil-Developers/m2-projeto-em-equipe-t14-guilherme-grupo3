@@ -1,12 +1,9 @@
-
-
-function renderCardsHome(array){
+export function renderCardsHome(array) {
     const ul = document.querySelector('#cardsHome')
 
     array.forEach(pet => {
-        const{name, species, avatar_url, id } = pet
+        const { name, species, avatar_url } = pet
 
-        console.log(avatar_url)
         const img = document.createElement('img')
         img.classList = "card-image"
         img.src = avatar_url
@@ -18,7 +15,7 @@ function renderCardsHome(array){
         const spanSpecie = document.createElement('span')
         spanSpecie.classList = "font-gray"
         spanSpecie.innerText = species
-       
+
         const div = document.createElement('div')
         div.classList = "card-text display-flex flex-direction-column"
         div.append(spanName, spanSpecie)
@@ -28,10 +25,4 @@ function renderCardsHome(array){
         li.append(img, div)
         ul.append(li)
     });
-}
-
-
-
-export{
-    renderCardsHome
 }

@@ -1,14 +1,13 @@
-.container-cards{
+.container-cards {
     display: flex;
     flex-wrap: wrap;
     width: 52%;
     margin: 0 auto;
-    /* border: 1px solid red; */
     justify-content: space-between;
     gap: 0;
 }
 
-.card{
+.card {
     width: 12.5rem;
     height: 17rem;
     box-shadow: 0px 0px 5px rgba(78, 32, 150, 0.25);
@@ -16,27 +15,23 @@
     background-color: var(--grey-4);
 }
 
-.card-image{
-    border-radius:4px 0 0 4px;
+.card-image {
+    border-radius: 4px 0 0 4px;
     height: 50%;
     width: 100%;
     object-fit: cover;
 }
 
-.card-text{
-    /* width: inherit; */
-    /* background-color: red; */
+.card-text {
     padding: 16px;
 }
 
-.gap-card{
+.gap-card {
     gap: 3rem;
 }
 
-@media (max-width: 600px)
-{
-    .container-cards{
+@media (max-width: 600px) {
+    .container-cards {
         justify-content: center;
     }
 }
-

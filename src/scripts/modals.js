@@ -222,7 +222,7 @@ export const createModalDelete = () => {
     modalContainer.insertAdjacentHTML('beforeend',
         `<h2 class='font-brand'>Adotar pet</h2>
         <form>
-            <h3>Tem certeza que deseja adotar o pet ?</h3>
+            <h3>Tem certeza que deseja desistir da adoção?</h3>
             <h4>O pet voltará ao centro de adoções, caso prossiga.</h4>
             <button type="submit" class='btn btn-primary'>Deletar</button>
         </form>
