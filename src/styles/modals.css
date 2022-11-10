@@ -87,6 +87,11 @@ a {
     .modal {
         width: 97vw;
     }
+
+    input,
+    select {
+        width: 100%
+    }
 }
 
 
