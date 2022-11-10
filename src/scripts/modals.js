@@ -176,9 +176,8 @@ export const createModalAttPet = () => {
     modalContainer.insertAdjacentHTML('beforeend',
         `<h2 class='font-brand'>Atualizar pet</h2>
         <form>
-            <input type="text" id="name" placeholder="Nome">
-            <input type="text" id="bread" placeholder="Raça">
-            <select>
+            <input type="text" id="name" placeholder="Nome" required>
+            <select required>
             <option selected disabled>Selecione a espécie do pet</option>
             <option value="Cachorro">Cachorro</option>
             <option value="Gato">Gato</option>
@@ -186,7 +185,8 @@ export const createModalAttPet = () => {
             <option value="Repteis">Repteis</option>
             <option value="Outros">Outros</option>
             </select>
-            <input type="text" id="avatar_url" placeholder="Avatar">
+            <input type="text" id="bread" placeholder="Raça" required>
+            <input type="text" id="avatar_url" placeholder="Avatar" required>
             <button type="submit" class='btn btn-primary'>Atualizar</button>
         </form>
       `
