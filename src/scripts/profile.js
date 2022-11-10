@@ -96,9 +96,17 @@ const insertPets = async () => {
     const array = await getPetsUser(token)
     const adoptedPets = array.filter(element => element.available_for_adoption == false)
     const pets = array.filter(element => element.available_for_adoption == true)
+    const ul = document.querySelector(".created-pets")
+    const textNone = document.createElement("h3")
+    
+    textNone.innerText = "Nenhum pet criado"
+
+    if(pets.length < 1) {
+        ul.appendChild(textNone)
+    }
 
     pets.forEach(element => {
-        const ul = document.querySelector(".created-pets")
+
         const textList = document.querySelector(".text-list")
         const textAdopt = document.querySelector(".text-adopt")
         const li = document.createElement("li")
@@ -182,8 +190,17 @@ const insertAdoptedPets = async () => {
     const adoptedPets = pets.filter(element => element.available_for_adoption == false)
     const buttonRegister = document.querySelector(".register-pet")
 
+    const ul = document.querySelector(".adopted-pets")
+    const textNone = document.createElement("h3")
+    
+    textNone.innerText = "Nenhum pet adotado"
+
+    if(adoptedPets.length < 1) {
+        ul.appendChild(textNone)
+    }
+
     adoptedPets.forEach(element => {
-        const ul = document.querySelector(".adopted-pets")
+
         const textList = document.querySelector(".text-adopt")
         const textCreated = document.querySelector(".text-list")
         const li = document.createElement("li")
@@ -198,6 +215,7 @@ const insertAdoptedPets = async () => {
         const bread = document.createElement("p")
         const spanBread = document.createElement("span")
         const spanBreadReal = document.createElement("span")
+
 
         if (adoptedPets.length > 1 || createdPets.length > 1) {
             buttonRegister.classList = "register-pet register-pet-margin btn btn-green"
@@ -311,7 +329,7 @@ const attPet = () => {
             const form = document.querySelector("form")
             const elements = [...form.elements]
             const select = document.querySelector('select')
-            // console.log(form)
+
             select.addEventListener('change', (event) => {
                 body['species'] = event.target.value
             })
