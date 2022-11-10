@@ -4,6 +4,14 @@ import { getLocalStorage, removeStorage } from "./localStorage.js"
 
 const token = getLocalStorage()
 
+const verifyPermission = async () => {
+    if (token == '' || token == null) {
+        window.location.replace('../../index.html')
+    }
+}
+
+verifyPermission()
+
 export const logoutProfile = () => {
     const btnLogout = document.querySelector('#btn-logout')
     btnLogout.onclick = (event) => {
@@ -356,7 +364,7 @@ const deletePets = () => {
     const button = document.querySelectorAll(".delete-pet")
 
     button.forEach(element => {
-        element.addEventListener("click", function() {
+        element.addEventListener("click", function () {
             createModalDelete()
             const form = document.querySelector("form")
             form.addEventListener('submit', async (e) => {
@@ -368,6 +376,6 @@ const deletePets = () => {
 
             })
         })
-        
+
     });
 }
