@@ -2,9 +2,11 @@ body {
     animation: gradient 5s ease alternate infinite;
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab) no-repeat;
     background-size: 300% 300%;
+    overflow: hidden;
     font-family: sans-serif;
     justify-content: center;
     color: white;
+    height: 100vh;
 }
 
 main {
