@@ -6,6 +6,7 @@ function renderCardsHome(array){
     array.forEach(pet => {
         const{name, species, avatar_url, id } = pet
 
+        console.log(avatar_url)
         const img = document.createElement('img')
         img.classList = "card-image"
         img.src = avatar_url

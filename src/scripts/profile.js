@@ -312,7 +312,7 @@ const attPet = () => {
             const form = document.querySelector("form")
             const elements = [...form.elements]
             const select = document.querySelector('select')
-            console.log(form)
+            // console.log(form)
             select.addEventListener('change', (event) => {
                 body['species'] = event.target.value
             })

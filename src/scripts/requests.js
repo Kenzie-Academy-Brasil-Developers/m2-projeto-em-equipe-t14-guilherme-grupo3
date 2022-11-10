@@ -17,6 +17,7 @@ const urlBase = 'https://m2-api-adot-pet.herokuapp.com'
 
 const sendRequest = (options) => {
     const request = axios.request(options).then(response => {
+        console.log(response.data)
         return response.data
     }).catch(function (error) {
         console.error(error);

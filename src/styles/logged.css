@@ -5,7 +5,7 @@
 }
 
 section {
-    border-top: 1px solid var(--grey-3);
+    /* border-top: 1px solid var(--grey-3); */
     display: flex;
     justify-content: center;
     padding-top: 111px;
