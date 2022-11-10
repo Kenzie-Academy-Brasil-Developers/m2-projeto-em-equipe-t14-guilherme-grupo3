@@ -1,6 +1,7 @@
 import { deleteProfile } from "./requests.js"
 import { getLocalStorage, removeStorage } from "./localStorage.js"
 
+
 /* --------------- CRIA CONTAINER PADRÃO PARA OS MODAIS -------------- */
 export const createModalContainer = () => {
     const body = document.querySelector('body')
@@ -29,7 +30,7 @@ export const createModalContainer = () => {
     body.appendChild(divContainer)
 
     button.onclick = () => divContainer.remove()
-    
+
     return divContent
 }
 
@@ -72,7 +73,7 @@ export const createModalRegister = () => {
 
     const redirect = document.querySelector('.redirect-login')
     const container = document.querySelector('.modal-container')
- 
+
     redirect.addEventListener('click', () => {
         container.remove()
         createModalLogin()
@@ -86,7 +87,6 @@ export const createModalLogin = () => {
     const button = document.querySelector("#close-modal")
     const img = button.firstChild
     img.src = "./src/images/close.svg"
-
 
     modalContainer.insertAdjacentHTML('beforeend',
         `<h2 class='font-brand'>Login</h2>
@@ -110,32 +110,31 @@ export const createModalLogin = () => {
 
 
 // ---------------------- MODAL DELETE PROFILE ----------------
-export const modalDeleteProfile = () =>{
+export const modalDeleteProfile = () => {
     const modalContainer = createModalContainer()
     const token = getLocalStorage()
-    
+
     const h2 = document.createElement('h2')
     h2.classList = 'font-brand'
     h2.innerText = 'Deseja mesmo deletar a sua conta?'
 
     const btnNoDelete = document.createElement('button')
-    btnNoDelete.classList =  'btn btn-primary'
+    btnNoDelete.classList = 'btn btn-primary'
     btnNoDelete.innerText = 'Não desejo deletar minha conta'
-    btnNoDelete.addEventListener('click', ()=>{
+    btnNoDelete.addEventListener('click', () => {
         document.querySelector('.modal-container').remove()
     })
 
     const btnDelete = document.createElement('button')
-    btnDelete.classList =  'btn btn-line-red'
+    btnDelete.classList = 'btn btn-line-red'
     btnDelete.innerText = 'Quero deletar minha conta'
-    btnDelete.addEventListener('click', async()=>{
+    btnDelete.addEventListener('click', async () => {
         await deleteProfile(token)
         removeStorage()
         window.location.replace('/index.html')
     })
 
     modalContainer.append(h2, btnNoDelete, btnDelete)
-    
 }
 
 
@@ -165,6 +164,7 @@ export const createModalRegisterPet = () => {
       `
     )
 }
+
 
 /* --------------- CRIA MODAL DE ATUALIZAÇÃO DE PET -------------- */
 export const createModalAttPet = () => {
