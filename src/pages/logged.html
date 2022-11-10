@@ -8,28 +8,32 @@
     <meta name="description" content="">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../styles/positioning.css">
-    <link rel="stylesheet" href="../styles/profile.css">
+    <link rel="stylesheet" href="../styles/logged.css">
     <link rel="stylesheet" href="../styles/modals.css">
     <link rel="stylesheet" href="../styles/buttons.css">
     <link rel="stylesheet" href="../styles/fonts.css">
-    <link rel="stylesheet" href="../styles/globalStyles.css">
-    <link rel="stylesheet" href="../styles/toasts.css">
+    <link rel="stylesheet" href="../styles/cards.css">
     <link rel="stylesheet" href="../styles/header.css">
-    <script type="module" defer src='../scripts/profile.js'></script>
+    <link rel="stylesheet" href="../styles/globalStyles.css">
+    <script type="module" defer src='../scripts/logged.js'></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <title>KenziePets - Profile</title>
+    <title>KenziePets - Logado</title>
 </head>
 
 <body>
     <header class="container display-flex justify-between align-items-center">
         <img class="logotipo" src="../images/logo.svg" alt="logotipo KenziePets">
         <nav class="display-flex">
-                <a class="btn btn-line" href="../../src/pages/logged.html">Home</a>
-                <a class="btn btn-primary" id="btn-logout" href="../../index.html">Logout</a>
+            <a class="btn btn-line" href="../../src/pages/profile.html">Perfil</a>
+            <a class="btn btn-primary" id="btn-logout" href="../../index.html">Logout</a>
         </nav>
     </header>
-    <main class="display-flex flex-direction-column align-items-center">
-        <!-- RENDERIZADO PELO JS -->
+    <main>
+        <section class="container-cards">
+            <ul>
+                <!-- RENDERIZADO PELO JS -->
+            </ul>
+        </section>
     </main>
     <footer class="footer align-items-center display-flex justify-center">
         <span class="font-footer-brand">KenziePets | Todos Direitos Reservados. - <a href="../pages/about.html">Sobre Nós</a> </span>

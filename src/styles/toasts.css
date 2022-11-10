@@ -1,0 +1,47 @@
+.toast-success,
+.toast-fail {
+    position: fixed;
+    padding: 20px;
+    right: 10px;
+    bottom: 10px;
+    width: auto;
+    height: 50px;
+    background-color: var(--green);
+    border-radius: 8px;
+    color: var(--grey-4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    animation: toastIt 3000ms ease-in forwards;
+}
+
+.toast-fail {
+    background-color: var(--red);
+}
+
+@media (max-width: 400px) {
+
+    .toast-success,
+    .toast-fail {
+        right: unset;
+    }
+}
+
+@keyframes toastIt {
+    0% {
+        top: -100px
+    }
+
+    25% {
+        top: 10px
+    }
+
+    50% {
+        top: 10px
+    }
+
+    100% {
+        top: -100px
+    }
+}

@@ -1,0 +1,105 @@
+.modal-container {
+    background-color: var(--transparency);
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    width: 460px;
+    height: auto;
+    background-color: var(--grey-4);
+    border-radius: 16px;
+    animation: openmodal 0.7s ease-in-out;
+}
+
+.header-modal {
+    border-radius: 16px 16px 0 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    height: 42px;
+    background-color: var(--color-primary);
+    padding-right: 16px;
+}
+
+.content-modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    gap: 22px;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+input,
+select {
+    width: 240px;
+    height: 27px;
+    border-radius: 16px;
+    padding-left: 8px;
+    color: var(--color-primary-2);
+    outline: none;
+    border: 1px solid var(--color-primary-2);
+}
+
+input::placeholder {
+    color: var(--color-primary-2);
+}
+
+.footer-modal {
+    height: 12px;
+    background-color: var(--color-primary);
+    border-radius: 0 0 16px 16px;
+}
+
+#close-modal {
+    border: none;
+    background: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 25px;
+}
+
+#close-modal:hover {
+    cursor: pointer;
+    background-color: var(--red);
+}
+
+a {
+    color: var(--color-primary);
+    cursor: pointer;
+}
+
+@media (max-width: 400px) {
+    .modal {
+        width: 97vw;
+    }
+}
+
+
+@keyframes openmodal {
+    0% {
+        transform: scale(0);
+    }
+
+    80% {
+        transform: scale(120%);
+    }
+
+    100% {
+        transform: scale(100%);
+    }
+}

@@ -1,0 +1,24 @@
+header {
+    height: 80px;
+    border-bottom: 1px solid var(--grey-3);
+}
+
+nav {
+    gap: 11px;
+}
+
+
+@media(max-width: 400px) {
+    nav {
+        flex-wrap: wrap;
+        gap: 5px;
+        justify-content: flex-end;
+    }
+
+    nav a {
+        width: 90px;
+        display: flex;
+        justify-content: center;
+    
+    }
+}

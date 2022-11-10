@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,10 +8,38 @@
     <meta name="description" content="">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./src/styles/index.css">
+    <link rel="stylesheet" href="./src/styles/globalStyles.css">
+    <link rel="stylesheet" href="./src/styles/buttons.css">
+    <link rel="stylesheet" href="./src/styles/fonts.css">
+    <link rel="stylesheet" href="./src/styles/positioning.css">
+    <link rel="stylesheet" href="./src/styles/cards.css">
+    <link rel="stylesheet" href="./src/styles/modals.css">
+    <link rel="stylesheet" href="./src/styles/header.css">
+    <link rel="stylesheet" href="./src/styles/toasts.css">
+    <script defer src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="module" src="src/scripts/login.js"></script>
     <script type="module" defer src='./src/scripts/index.js'></script>
     <title>KenziePets - Home</title>
 </head>
-<body>
 
+<body>
+    <header class="container display-flex justify-between align-items-center">
+        <img class="logotipo" src="./src/images/logo.svg" alt="logotipo KenziePets">
+        <nav class="display-flex">
+            <a class="btn btn-line button-register">Registro</a>
+            <a class="btn btn-primary">Login</a>
+        </nav>
+    </header>
+    
+    <main class="container-cards">
+        <ul id="cardsHome" class="margin-top-cards display-flex gap-card justify-between wrap">
+            <!-- RENDERIZADO PELO JS -->
+        </ul>
+
+    </main>
+    <footer class="footer align-items-center display-flex justify-center">
+        <span class="font-footer-brand">KenziePets | Todos Direitos Reservados. - <a href="./src/pages/about.html">Sobre Nós</a> </span>
+    </footer>
 </body>
+
 </html>
