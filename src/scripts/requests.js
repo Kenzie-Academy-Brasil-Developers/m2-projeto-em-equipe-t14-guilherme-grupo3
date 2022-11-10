@@ -3,25 +3,13 @@ import { eventLogin } from "./login.js";
 import { createModalLogin } from "./modals.js";
 import { toast } from "./toasts.js";
 
-
 const urlBase = 'https://m2-api-adot-pet.herokuapp.com'
-
-/* {
-    USUÁRIO DE TESTE:
-
-    "name": "grupo3",
-    "email": "grupo3@mail.com",
-    "password": "123",
-    "avatar_url": "https://w7.pngwing.com/pngs/798/436/png-transparent-computer-icons-user-profile-avatar-profile-heroes-black-profile-thumbnail.png"
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2Njc5MjIwNzcsImV4cCI6MTY2ODUyNjg3Nywic3ViIjoiN2EyNDRjNmQtZGQyOS00YzI2LThkOGYtZGEzZGI1NDUzY2U4In0.XBdE5HR2bicnsKPDl-4DqaCAyCpNLvdHjs_lqxnhy0E"
-} */
 
 const sendRequest = (options) => {
     const request = axios.request(options).then(response => {
-        // console.log(response.data)
         return response.data
     }).catch(function (error) {
-        console.error(error);
+        // console.error(error);
         return error.response.data.message
     });
     return request
@@ -39,11 +27,9 @@ export const login = async (body) => {
         url: `${urlBase}/session/login`,
         headers: { 'Content-Type': 'application/json' },
         data: body
-        // { email: 'rafael32@mail.com', password: '123456' }
     };
 
     const response = await sendRequest(options)
-    console.log(response)
 
     if (response == 'Email not found' || response == 'please inform a valid email format') {
         toast("fail", "Email não encontrado!")
@@ -56,7 +42,6 @@ export const login = async (body) => {
             window.location.replace('./src/pages/logged.html')
         }, 3000);
     }
-    // return sendRequest(options)
 }
 
 
@@ -67,16 +52,9 @@ export const createUser = async (body) => {
         url: `${urlBase}/users`,
         headers: { 'Content-Type': 'application/json' },
         data: body
-        /* {
-            name: 'Rafael',
-            email: 'rafael3030@mail.com',
-            password: '123456',
-            avatar_url: 'https://imagemLegal.com'
-        } */
     };
 
     const response = await sendRequest(options)
-    console.log(response)
 
     if (response == 'please inform a valid email format') {
         toast("fail", "Email inválido!")
@@ -135,11 +113,9 @@ export const updateProfile = async (token, body) => {
             Authorization: `Bearer ${token}`
         },
         data: body
-        /* { avatar_url: 'https://umaImagemLegal.com', name: 'Bertoldo' } */
     };
 
     const response = await sendRequest(options)
-    console.log(response)
 
     if (response == 'please inform a valid image link') {
         setTimeout(() => {
@@ -156,7 +132,6 @@ export const updateProfile = async (token, body) => {
 
 /* ------------------  DELETAR PERFIL  -------------------*/
 export const deleteProfile = (token) => {
-
     const options = {
         method: 'DELETE',
         url: `${urlBase}/users/profile`,
@@ -184,16 +159,9 @@ export const createPet = async (token, body) => {
             Authorization: `Bearer ${token}`
         },
         data: body
-        /* {
-           name: 'Sebastian',
-           bread: 'SRD',
-           species: 'Cachorro',
-           avatar_url: 'uma fotinha do bastião'
-       } */
     };
 
     const response = await sendRequest(options)
-    console.log(response)
 
     if (response == "'species' field is required") {
         toast("fail", "Selecione uma espécie!")
@@ -243,33 +211,19 @@ export const updatePet = async (token, id, body) => {
             Authorization: `Bearer ${token}`
         },
         data: body
-        /*  {
-            name: 'Sebastian',
-            bread: 'SRD',
-            species: 'Cachorro',
-            avatar_url: 'uma fotinha do Sebastian'
-        } */
     };
 
     const response = await sendRequest(options)
-    console.log(response)
 
     if (response == "'species' field is required") {
-        // setTimeout(() => {
         toast("fail", "Selecione uma espécie!")
-        // }, 3000);
     } else if (response == 'please inform a valid image link') {
-        // setTimeout(() => {
         toast("fail", "Link da Imagem inválido!")
-        // }, 3000);
     } else {
         toast("success", "Atualizado com sucesso!")
-        // setTimeout(() => {
         const modal = document.querySelector(".modal-container")
         modal.remove()
-        // refreshPets()
         return true
-        // }, 3000);
     }
 }
 
@@ -303,7 +257,6 @@ export const createAdoption = (token, body) => {
             Authorization: `Bearer ${token}`
         },
         data: body
-        // { pet_id: 'e44b2590-05a5-4f21-aa50-38ab32bcc058' }
     };
 
     return sendRequest(options)
@@ -362,10 +315,6 @@ export const updateAdoption = (token, id, body) => {
             Authorization: `Bearer ${token}`
         },
         data: body
-        /* {
-            adopter_id: '60d492f8-c5cd-44d7-98a5-a968624b9f55',
-            pet_id: '712fa317-d974-472b-b561-6ef4cdcbd1fd'
-        } */
     };
 
     return sendRequest(options)

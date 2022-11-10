@@ -1,60 +1,60 @@
- .font-brand{
+ .font-brand {
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--color-primary);
  }
 
- .font-gray{
+ .font-gray {
     font-size: .65rem;
     font-weight: 600;
     color: var(--gray-2);
  }
 
- .font-body-brand{
+ .font-body-brand {
     font-size: 1rem;
     font-weight: 600;
     color: var(--color-primary);
  }
 
- .font-body-black{
+ .font-body-black {
     font-size: 1rem;
     font-weight: 600;
     color: var(--gray-1);
  }
 
- .font-card-profile-brand{
+ .font-card-profile-brand {
     font-size: 0.875rem;
     font-weight: 400;
     color: var(--color-primary);
  }
- 
- .font-card-brand{
+
+ .font-card-brand {
     font-size: .875rem;
     font-weight: 400;
     color: var(--color-primary);
  }
 
- .font-card-profile-black{
+ .font-card-profile-black {
     font-size: 0.875rem;
     font-weight: 400;
     color: var(--gray-1);
  }
 
- .font-card-black{
+ .font-card-black {
     font-size: .875rem;
     font-weight: 400;
     color: var(--gray-1);
  }
 
- .font-footer-brand{
-   font-size: 0.75rem;
-   font-weight: 400;
-   color: var(--color-primary);
-}
+ .font-footer-brand {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--color-primary);
+ }
 
 
-@media(max-width: 400px) {
-   .font-gray{
-      font-size: 1rem;
-   }
-}
+ @media(max-width: 400px) {
+    .font-gray {
+       font-size: 1rem;
+    }
+ }

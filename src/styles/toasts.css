@@ -6,9 +6,9 @@
     bottom: 10px;
     width: auto;
     height: 50px;
-    background-color: green;
+    background-color: var(--green);
     border-radius: 8px;
-    color: white;
+    color: var(--grey-4);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,10 +17,11 @@
 }
 
 .toast-fail {
-    background-color: rgb(165, 0, 0);
+    background-color: var(--red);
 }
 
 @media (max-width: 400px) {
+
     .toast-success,
     .toast-fail {
         right: unset;
