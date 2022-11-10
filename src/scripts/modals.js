@@ -186,7 +186,7 @@ export const createModalAttPet = () => {
             <option value="Outros">Outros</option>
             </select>
             <input type="text" id="bread" placeholder="Raça" required>
-            <input type="text" id="avatar_url" placeholder="Avatar" required>
+            <input type="text" id="avatar_url" placeholder="Foto do pet" required>
             <button type="submit" class='btn btn-primary'>Atualizar</button>
         </form>
       `
