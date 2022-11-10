@@ -1,8 +1,9 @@
 import { getLocalStorage, removeStorage } from "./localStorage.js"
 import { createModalAdopt } from "./modals.js"
-import { createAdoption, getAdoptionById, getAllPets } from "./requests.js"
+import { createAdoption, getAllPets } from "./requests.js"
 
 const token = getLocalStorage()
+
 
 /* --------------- ENCERRAR A SESSÃO DO USUÁRIO --------------- */
 export const logout = () => {
@@ -15,6 +16,7 @@ export const logout = () => {
 }
 
 
+/* --------------- RENDERIZAR LISTA DE PETS -------------- */
 const renderPets = (pets) => {
     const listPets = document.querySelector('main section ul')
     listPets.innerHTML = ''
@@ -53,6 +55,8 @@ const verifyPermission = async () => {
 }
 verifyPermission()
 
+
+/* --------------- ADOTAR UM PET -------------- */
 const adoptPet = () => {
     const button = document.querySelectorAll(".button-adopt")
     const body = {}
@@ -68,11 +72,8 @@ const adoptPet = () => {
                 body["pet_id"] = element.id
                 
                 await createAdoption(token, body)
-                window.location.href = "http://127.0.0.1:5500/src/pages/profile.html"
+                window.location.href = "./profile.html"
             })
         })
-
-
     })
 }
-

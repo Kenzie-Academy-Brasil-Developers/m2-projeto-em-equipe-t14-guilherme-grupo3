@@ -2,6 +2,7 @@ import { createModalUpdateProfile, createModalRegisterPet, modalDeleteProfile, c
 import { getPetsUser, getUserProfile, updateProfile, createPet, updatePet } from "./requests.js"
 import { getLocalStorage, removeStorage } from "./localStorage.js"
 
+const token = getLocalStorage()
 
 export const logoutProfile = () => {
     const btnLogout = document.querySelector('#btn-logout')
@@ -11,10 +12,8 @@ export const logoutProfile = () => {
         window.location.replace('../../index.html')
     }
 }
-
 logoutProfile()
 
-const token = getLocalStorage()
 
 const attUser = () => {
     const button = document.querySelector(".att-profile")
@@ -41,18 +40,15 @@ const attUser = () => {
     })
 }
 
-const modalRegisterPet = (button) => {
 
+const modalRegisterPet = (button) => {
     button.addEventListener('click', (event) => {
         event.preventDefault()
         createModalRegisterPet()
-        const modal = document.querySelector('.modal-container')
         const form = document.querySelector('form')
         const select = document.querySelector('select')
 
-
         const [...formElements] = form
-
         const body = {}
 
         select.addEventListener('change', (event) => {
@@ -71,26 +67,10 @@ const modalRegisterPet = (button) => {
 
             const response = await createPet(token, body)
             if (response) refreshPets()
-            /* toast("success", "Criado com sucesso, atualizando...")
-            modal.remove()
-            setTimeout(() => {
-                const adopted = document.querySelector(".adopted-pets").childNodes
-                const created = document.querySelector(".created-pets").childNodes
-                const arrayAdopted = [...adopted]
-                const arrayCreated = [...created]
-                arrayAdopted.forEach(element =>
-                    element.remove()
-                );
-                arrayCreated.forEach(element =>
-                    element.remove()
-                );
-                insertPets()
-                insertAdoptedPets()
-            }, 4000); */
-
         })
     })
 }
+
 
 const insertPets = async () => {
     const array = await getPetsUser(token)
@@ -98,10 +78,10 @@ const insertPets = async () => {
     const pets = array.filter(element => element.available_for_adoption == true)
     const ul = document.querySelector(".created-pets")
     const textNone = document.createElement("h3")
-    
+
     textNone.innerText = "Nenhum pet criado"
 
-    if(pets.length < 1) {
+    if (pets.length < 1) {
         ul.appendChild(textNone)
     }
 
@@ -184,6 +164,7 @@ const insertPets = async () => {
     deleteModal()
 }
 
+
 const insertAdoptedPets = async () => {
     const pets = await getPetsUser(token)
     const createdPets = pets.filter(element => element.available_for_adoption == true)
@@ -192,15 +173,14 @@ const insertAdoptedPets = async () => {
 
     const ul = document.querySelector(".adopted-pets")
     const textNone = document.createElement("h3")
-    
+
     textNone.innerText = "Nenhum pet adotado"
 
-    if(adoptedPets.length < 1) {
+    if (adoptedPets.length < 1) {
         ul.appendChild(textNone)
     }
 
     adoptedPets.forEach(element => {
-
         const textList = document.querySelector(".text-adopt")
         const textCreated = document.querySelector(".text-list")
         const li = document.createElement("li")
@@ -215,7 +195,6 @@ const insertAdoptedPets = async () => {
         const bread = document.createElement("p")
         const spanBread = document.createElement("span")
         const spanBreadReal = document.createElement("span")
-
 
         if (adoptedPets.length > 1 || createdPets.length > 1) {
             buttonRegister.classList = "register-pet register-pet-margin btn btn-green"
@@ -245,7 +224,6 @@ const insertAdoptedPets = async () => {
         spanBreadReal.classList = "font-body-brand"
         spanBreadReal.innerText = `${element.bread}`
 
-
         nome.append(spanNome, spanNomeReal)
         especie.append(spanEspecie, spanEspecieReal)
         bread.append(spanBread, spanBreadReal)
@@ -270,31 +248,31 @@ const dinamicPage = async () => {
         user.avatar_url = '/src/images/avatar_default.jpg'
     }
 
-
     main.insertAdjacentHTML("afterbegin", ` <section class="display-flex background-purple justify-center">
     <img class="profile-image" src="${user.avatar_url}"> 
-</section>
-<section class="width-100 display-flex flex-direction-column align-items-center">
-    <div class="profile-information display-flex flex-direction-column justify-between">
-        <h2 class="font-brand text-align-center">Dados pessoais</h2>
-        <p><span class="font-body-brand">Nome:</span> <span class="font-body-black">${user.name}</span></p>
-        <p><span class="font-body-brand">E-mail:</span> <span class="font-body-black">${user.email}</span></p>
-        <div class="display-flex profile-buttons-div">
-            <button class="btn btn-primary att-profile" type="button">Atualizar informações</button>
-            <button class="btn btn-line-red delete-profile" type="button">Deletar conta</button>
+    </section>
+    <section class="width-100 display-flex flex-direction-column align-items-center">
+        <div class="profile-information display-flex flex-direction-column justify-between">
+            <h2 class="font-brand text-align-center">Dados pessoais</h2>
+            <p><span class="font-body-brand">Nome:</span> <span class="font-body-black">${user.name}</span></p>
+            <p><span class="font-body-brand">E-mail:</span> <span class="font-body-black">${user.email}</span></p>
+            <div class="display-flex profile-buttons-div">
+                <button class="btn btn-primary att-profile" type="button">Atualizar informações</button>
+                <button class="btn btn-line-red delete-profile" type="button">Deletar conta</button>
+            </div>
         </div>
-    </div>
-</section>
-<section class="pets-section display-flex flex-direction-column">
-    <div>
-        <button class="register-pet btn btn-green" type="button">Cadastrar novo pet</button>
-    </div>
-    <h2 class="text-list">Pets Cadastrados</h2>
-    <ul class="display-flex wrap created-pets">
-    </ul>
-    <h2 class="text-adopt">Pets Adotados</h2>
-    <ul class="display-flex wrap adopted-pets">
-    </ul>
+    </section>
+    <section class="pets-section display-flex flex-direction-column">
+        <div>
+            <button class="register-pet btn btn-green" type="button">Cadastrar novo pet</button>
+        </div>
+        <h2 class="text-list">Pets Cadastrados</h2>
+        <ul class="display-flex wrap created-pets">
+        </ul>
+        <h2 class="text-adopt">Pets Adotados</h2>
+        <ul class="display-flex wrap adopted-pets">
+        </ul>
+    </section>        
 `)
 
     const registerNewPet = document.querySelector('.register-pet')
@@ -303,7 +281,6 @@ const dinamicPage = async () => {
     insertAdoptedPets()
     attUser()
     modalRegisterPet(registerNewPet)
-
 }
 
 
@@ -337,7 +314,6 @@ const attPet = () => {
             form.addEventListener("submit", async (e) => {
                 e.preventDefault()
 
-
                 elements.forEach((elemento) => {
                     if (elemento.tagName == "INPUT" && elemento.value !== "") {
                         body[elemento.id] = elemento.value
@@ -351,6 +327,7 @@ const attPet = () => {
         })
     });
 }
+
 
 const refreshPets = () => {
     setTimeout(() => {
