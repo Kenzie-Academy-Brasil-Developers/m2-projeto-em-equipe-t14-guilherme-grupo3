@@ -1,0 +1,48 @@
+body {
+    animation: gradient 5s ease alternate infinite;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab) no-repeat;
+    background-size: 300% 300%;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    color: white;
+    height: 100vh;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    margin-top: 150px;
+}
+
+section{
+    display: flex;
+    overflow-x:auto;
+    align-items: center;
+    animation: move linear infinite;
+}
+
+main div{
+display: flex;
+align-items: center;
+gap: 10px;
+width: 220px;
+}
+
+main img {
+    border-radius: 50%;
+    width: 100px;
+    border: 2px solid white;
+}
+
+@keyframes gradient {
+    from {
+        background-position: 0 50%;
+    }
+
+    to {
+        background-position: 100% 50%;
+    }
+}
