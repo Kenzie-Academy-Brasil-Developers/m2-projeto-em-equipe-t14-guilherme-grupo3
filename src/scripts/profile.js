@@ -1,5 +1,5 @@
-import { createModalUpdateProfile, createModalRegisterPet, modalDeleteProfile, createModalAttPet } from "./modals.js";
-import { getPetsUser, getUserProfile, updateProfile, createPet, updatePet } from "./requests.js"
+import { createModalUpdateProfile, createModalRegisterPet, modalDeleteProfile, createModalAttPet, createModalDelete } from "./modals.js";
+import { getPetsUser, getUserProfile, updateProfile, createPet, updatePet, deletePet } from "./requests.js"
 import { getLocalStorage, removeStorage } from "./localStorage.js"
 
 const token = getLocalStorage()
@@ -195,6 +195,7 @@ const insertAdoptedPets = async () => {
         const bread = document.createElement("p")
         const spanBread = document.createElement("span")
         const spanBreadReal = document.createElement("span")
+        const button = document.createElement("button")
 
         if (adoptedPets.length > 1 || createdPets.length > 1) {
             buttonRegister.classList = "register-pet register-pet-margin btn btn-green"
@@ -206,6 +207,10 @@ const insertAdoptedPets = async () => {
             buttonRegister.classList = "register-pet btn btn-green"
             textList.classList = "text-adopt"
         }
+
+        button.classList = "btn btn-line-red delete-pet"
+        button.id = `${element.id}`
+        button.innerText = "Deletar"
 
         li.classList = "display-flex"
         img.classList = "card-image"
@@ -228,12 +233,13 @@ const insertAdoptedPets = async () => {
         especie.append(spanEspecie, spanEspecieReal)
         bread.append(spanBread, spanBreadReal)
 
-        div.append(nome, especie, bread)
+        div.append(nome, especie, bread, button)
 
         li.append(img, div)
 
         ul.appendChild(li)
     });
+    deletePets()
 }
 
 const dinamicPage = async () => {
@@ -344,4 +350,24 @@ const refreshPets = () => {
         insertPets()
         insertAdoptedPets()
     }, 1000);
+}
+
+const deletePets = () => {
+    const button = document.querySelectorAll(".delete-pet")
+
+    button.forEach(element => {
+        element.addEventListener("click", function() {
+            createModalDelete()
+            const form = document.querySelector("form")
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault()
+                const response = await deletePet(token, element.id)
+                const buttonClose = document.querySelector("#close-modal")
+                if (response) refreshPets()
+                buttonClose.click()
+
+            })
+        })
+        
+    });
 }
