@@ -1,7 +1,7 @@
-import { createModalUpdateProfile, createModalRegisterPet,modalDeleteProfile, createModalAttPet } from "./modals.js";
-import { getPetsUser, getUserProfile, updateProfile, createPet, updatePet, getMyAdoptions } from "./requests.js"
+import { createModalUpdateProfile, createModalRegisterPet, modalDeleteProfile, createModalAttPet } from "./modals.js";
+import { getPetsUser, getUserProfile, updateProfile, createPet, updatePet } from "./requests.js"
 import { getLocalStorage, removeStorage } from "./localStorage.js"
-import { toast } from "./toasts.js";
+
 
 export const logoutProfile = () => {
     const btnLogout = document.querySelector('#btn-logout')
@@ -17,9 +17,8 @@ logoutProfile()
 const token = getLocalStorage()
 
 const attUser = () => {
-
     const button = document.querySelector(".att-profile")
-    
+
     button.addEventListener("click", async function () {
         createModalUpdateProfile()
         const modal = document.querySelector(".modal-container")
@@ -70,32 +69,33 @@ const modalRegisterPet = (button) => {
                 }
             })
 
-            await createPet(token, body)
-            toast("success", "Criado com sucesso, atualizando...")
+            const response = await createPet(token, body)
+            if (response) refreshPets()
+            /* toast("success", "Criado com sucesso, atualizando...")
             modal.remove()
             setTimeout(() => {
                 const adopted = document.querySelector(".adopted-pets").childNodes
                 const created = document.querySelector(".created-pets").childNodes
-                const arrayAdopted = [... adopted]
-                const arrayCreated = [... created]
-                arrayAdopted.forEach(element => 
+                const arrayAdopted = [...adopted]
+                const arrayCreated = [...created]
+                arrayAdopted.forEach(element =>
                     element.remove()
                 );
-                arrayCreated.forEach(element => 
-                   element.remove()
-               );
+                arrayCreated.forEach(element =>
+                    element.remove()
+                );
                 insertPets()
                 insertAdoptedPets()
-            }, 4000);
-        
+            }, 4000); */
+
         })
     })
 }
 
 const insertPets = async () => {
     const array = await getPetsUser(token)
-    const adoptedPets = array.filter(element => element.available_for_adoption == false )
-    const pets = array.filter(element => element.available_for_adoption == true )
+    const adoptedPets = array.filter(element => element.available_for_adoption == false)
+    const pets = array.filter(element => element.available_for_adoption == true)
 
     pets.forEach(element => {
         const ul = document.querySelector(".created-pets")
@@ -178,8 +178,8 @@ const insertPets = async () => {
 
 const insertAdoptedPets = async () => {
     const pets = await getPetsUser(token)
-    const createdPets = pets.filter(element => element.available_for_adoption == true )
-    const adoptedPets = pets.filter(element => element.available_for_adoption == false )
+    const createdPets = pets.filter(element => element.available_for_adoption == true)
+    const adoptedPets = pets.filter(element => element.available_for_adoption == false)
     const buttonRegister = document.querySelector(".register-pet")
 
     adoptedPets.forEach(element => {
@@ -204,7 +204,7 @@ const insertAdoptedPets = async () => {
             ul.classList = "display-flex wrap adopted-pets ul-place-center"
             textList.classList = "text-adopt register-pet-margin"
             textCreated.classList = "text-list register-pet-margin"
-            
+
         } else {
             buttonRegister.classList = "register-pet btn btn-green"
             textList.classList = "text-adopt"
@@ -279,8 +279,8 @@ const dinamicPage = async () => {
     </ul>
 `)
 
-const registerNewPet = document.querySelector('.register-pet')
-    
+    const registerNewPet = document.querySelector('.register-pet')
+
     insertPets()
     insertAdoptedPets()
     attUser()
@@ -293,11 +293,10 @@ await dinamicPage()
 
 function deleteModal() {
     const btnDeleteModal = document.querySelector('.delete-profile')
-    btnDeleteModal.addEventListener('click', ()=>{
-            modalDeleteProfile()
+    btnDeleteModal.addEventListener('click', () => {
+        modalDeleteProfile()
     })
 }
-
 
 
 const attPet = () => {
@@ -305,9 +304,9 @@ const attPet = () => {
 
     button.forEach(element => {
 
-        element.addEventListener("click", function() {
+        element.addEventListener("click", function () {
             createModalAttPet()
-            
+
             const body = {}
             const form = document.querySelector("form")
             const elements = [...form.elements]
@@ -320,34 +319,34 @@ const attPet = () => {
             form.addEventListener("submit", async (e) => {
                 e.preventDefault()
 
-        
+
                 elements.forEach((elemento) => {
-                    if(elemento.tagName == "INPUT" && elemento.value !== "") {
+                    if (elemento.tagName == "INPUT" && elemento.value !== "") {
                         body[elemento.id] = elemento.value
                     }
                 })
 
-                 await updatePet(token, element.id, body)
-                 
-                 const modal = document.querySelector(".modal-container")
-                 modal.remove()
-                 setTimeout(() => {
-                     const adopted = document.querySelector(".adopted-pets").childNodes
-                     const created = document.querySelector(".created-pets").childNodes
-                     const arrayAdopted = [... adopted]
-                     const arrayCreated = [... created]
-                     arrayAdopted.forEach(element => 
-                         element.remove()
-                     );
-                     arrayCreated.forEach(element => 
-                        element.remove()
-                    );
-                     insertPets()
-                     insertAdoptedPets()
-                 }, 4000);
+                const response = await updatePet(token, element.id, body)
+                if (response) refreshPets()
 
             })
         })
-        
     });
+}
+
+const refreshPets = () => {
+    setTimeout(() => {
+        const adopted = document.querySelector(".adopted-pets").childNodes
+        const created = document.querySelector(".created-pets").childNodes
+        const arrayAdopted = [...adopted]
+        const arrayCreated = [...created]
+        arrayAdopted.forEach(element =>
+            element.remove()
+        );
+        arrayCreated.forEach(element =>
+            element.remove()
+        );
+        insertPets()
+        insertAdoptedPets()
+    }, 1000);
 }

@@ -3,6 +3,7 @@ import { eventLogin } from "./login.js";
 import { createModalLogin } from "./modals.js";
 import { toast } from "./toasts.js";
 
+
 const urlBase = 'https://m2-api-adot-pet.herokuapp.com'
 
 /* {
@@ -17,7 +18,7 @@ const urlBase = 'https://m2-api-adot-pet.herokuapp.com'
 
 const sendRequest = (options) => {
     const request = axios.request(options).then(response => {
-        console.log(response.data)
+        // console.log(response.data)
         return response.data
     }).catch(function (error) {
         console.error(error);
@@ -174,7 +175,7 @@ export const deleteProfile = (token) => {
 
 
 /* --------------------- CRIAR PET --------------------- */
-export const createPet = (token, body) => {
+export const createPet = async (token, body) => {
     const options = {
         method: 'POST',
         url: `${urlBase}/pets`,
@@ -191,7 +192,19 @@ export const createPet = (token, body) => {
        } */
     };
 
-    return sendRequest(options)
+    const response = await sendRequest(options)
+    console.log(response)
+
+    if (response == "'species' field is required") {
+        toast("fail", "Selecione uma espécie!")
+    } else if (response == 'please inform a valid image link') {
+        toast("fail", "Link da Imagem inválido!")
+    } else {
+        toast("success", "Cadastrado com sucesso!")
+        const modal = document.querySelector(".modal-container")
+        modal.remove()
+        return true
+    }
 }
 
 
@@ -221,7 +234,7 @@ export const getPetsUser = (token) => {
 
 
 /* --------------------- ATUALIZAR PET PELO ID --------------------- */
-export const updatePet = (token, id, body) => {
+export const updatePet = async (token, id, body) => {
     const options = {
         method: 'PATCH',
         url: `${urlBase}/pets/${id}`,
@@ -238,7 +251,26 @@ export const updatePet = (token, id, body) => {
         } */
     };
 
-    return sendRequest(options)
+    const response = await sendRequest(options)
+    console.log(response)
+
+    if (response == "'species' field is required") {
+        // setTimeout(() => {
+        toast("fail", "Selecione uma espécie!")
+        // }, 3000);
+    } else if (response == 'please inform a valid image link') {
+        // setTimeout(() => {
+        toast("fail", "Link da Imagem inválido!")
+        // }, 3000);
+    } else {
+        toast("success", "Atualizado com sucesso!")
+        // setTimeout(() => {
+        const modal = document.querySelector(".modal-container")
+        modal.remove()
+        // refreshPets()
+        return true
+        // }, 3000);
+    }
 }
 
 
